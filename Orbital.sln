@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Orbital", "Orbital\Orbital.vcxproj", "{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{BC6C94CA-481D-4300-BB99-57B702FAD256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,8 @@ Global
 		{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}.Debug|x86.Build.0 = Debug|Win32
 		{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}.Release|x86.ActiveCfg = Release|Win32
 		{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}.Release|x86.Build.0 = Release|Win32
+		{BC6C94CA-481D-4300-BB99-57B702FAD256}.Debug|x86.ActiveCfg = Debug
+		{BC6C94CA-481D-4300-BB99-57B702FAD256}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,8 +15,7 @@
     <Keyword>QtVS_v303</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
-    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')"
-      >$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
@@ -28,11 +27,8 @@
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <Target Name="QtMsBuildNotFound"
-    BeforeTargets="CustomBuild;ClCompile"
-    Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
-    <Message Importance="High"
-      Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
@@ -47,9 +43,37 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <IncludePath>C:\Users\D\source\repos\Orbital\Orbital;C:\Users\D\source\repos\Orbital\Orbital\PyEngine;C:\Users\D\source\repos\Orbital\Orbital\UI;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <IncludePath>C:\Users\D\source\repos\Orbital\Orbital;C:\Users\D\source\repos\Orbital\Orbital\PyEngine;C:\Users\D\source\repos\Orbital\Orbital\UI;$(IncludePath)</IncludePath>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Python37-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Python37-32\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Python37-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Python37-32\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>*.dll;*.qm;%(Outputs)</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
     <QtInstall>msvc2017</QtInstall>
     <QtModules>core;gui;widgets;printsupport</QtModules>
@@ -90,12 +114,92 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="AppMainWindow.qrc"/>
-    <QtUic Include="AppMainWindow.ui"/>
-    <QtMoc Include="AppMainWindow.h"/>
-    <ClCompile Include="AppMainWindow.cpp"/>
-    <ClCompile Include="main.cpp"/>
-
+    <QtRcc Include="AppMainWindow.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppConfig.cpp" />
+    <ClCompile Include="AppEngine.cpp" />
+    <ClCompile Include="AppPlot.cpp" />
+    <ClCompile Include="AppUI.cpp" />
+    <ClCompile Include="DataManager.cpp" />
+    <ClCompile Include="GridPoint.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlotManager.cpp" />
+    <ClCompile Include="PyEngine\PyEngine.cpp" />
+    <ClCompile Include="PyEngine\QPyEngineCore.cpp" />
+    <ClCompile Include="PyEngine\QPyEngineInterface.cpp" />
+    <ClCompile Include="PyEngine\QPyEngineUtils.cpp" />
+    <ClCompile Include="UI\AppMainWindow.cpp" />
+    <ClCompile Include="UI\AutoSaveDialog.cpp" />
+    <ClCompile Include="UI\CustomControlEditorDialog.cpp" />
+    <ClCompile Include="UI\DataBufferDialog.cpp" />
+    <ClCompile Include="UI\DataInfoDialog.cpp" />
+    <ClCompile Include="UI\ErrorLogDialog.cpp" />
+    <ClCompile Include="UI\ModuleInfoDialog.cpp" />
+    <ClCompile Include="UI\PlotArrangementDialog.cpp" />
+    <ClCompile Include="UI\PlotEditorDialog.cpp" />
+    <ClCompile Include="UI\QButtonGrid.cpp" />
+    <ClCompile Include="UI\qcustomplot.cpp" />
+    <ClCompile Include="UI\SaveDialog.cpp" />
+    <ClCompile Include="UI\SettingsDialog.cpp" />
+    <ClCompile Include="UI\VisaSetupDialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="PyEngine\PyEngine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppConfig.h" />
+    <ClInclude Include="AppPlot.h" />
+    <ClInclude Include="commondefine.h" />
+    <ClInclude Include="DataManager.h" />
+    <ClInclude Include="GridPoint.h" />
+    <ClInclude Include="QCustomContainer.h" />
+    <ClInclude Include="resource.h" />
+    <QtMoc Include="PlotManager.h" />
+    <QtMoc Include="AppUI.h" />
+    <QtMoc Include="AppEngine.h" />
+    <ClInclude Include="PyEngine\QPyEngineCommon.h" />
+    <ClInclude Include="PyEngine\QPyEngineUtils.h" />
+    <QtMoc Include="UI\VisaSetupDialog.h" />
+    <QtMoc Include="UI\SettingsDialog.h" />
+    <QtMoc Include="UI\SaveDialog.h" />
+    <QtMoc Include="UI\qcustomplot.h" />
+    <QtMoc Include="UI\QButtonGrid.h" />
+    <QtMoc Include="UI\PlotEditorDialog.h" />
+    <QtMoc Include="UI\PlotArrangementDialog.h" />
+    <QtMoc Include="UI\ModuleInfoDialog.h" />
+    <QtMoc Include="UI\ErrorLogDialog.h" />
+    <QtMoc Include="UI\DataInfoDialog.h" />
+    <QtMoc Include="UI\DataBufferDialog.h" />
+    <QtMoc Include="UI\CustomControlEditorDialog.h" />
+    <QtMoc Include="UI\AutoSaveDialog.h" />
+    <QtMoc Include="UI\AppMainWindow.h" />
+    <QtMoc Include="PyEngine\QPyEngineInterface.h" />
+    <QtMoc Include="PyEngine\QPyEngineCore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="UI\AppMainWindow.ui" />
+    <QtUic Include="UI\AutoSaveDialog.ui" />
+    <QtUic Include="UI\CustomControlEditorDialog.ui" />
+    <QtUic Include="UI\DataBufferDialog.ui" />
+    <QtUic Include="UI\DataInfoDialog.ui" />
+    <QtUic Include="UI\ErrorLogDialog.ui" />
+    <QtUic Include="UI\ModuleInfoDialog.ui" />
+    <QtUic Include="UI\PlotArrangementDialog.ui" />
+    <QtUic Include="UI\PlotEditorDialog.ui" />
+    <QtUic Include="UI\SaveDialog.ui" />
+    <QtUic Include="UI\SettingsDialog.ui" />
+    <QtUic Include="UI\VisaSetupDialog.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orbital.ini" />
+    <None Include="scripts\ScriptSkeleton.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Orbital.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

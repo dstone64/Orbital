@@ -1,4 +1,7 @@
 <RCC>
-    <qresource prefix="AppMainWindow">
+    <qresource prefix="/AppMainWindow">
+        <file>Resources/checkmark.png</file>
+        <file>Resources/exclamationmark.png</file>
+        <file>Resources/Orbital.ico</file>
     </qresource>
 </RCC>

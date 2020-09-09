@@ -1,10 +1,7 @@
-#include "AppMainWindow.h"
-#include <QtWidgets/QApplication>
+#include "AppEngine.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    AppMainWindow w;
-    w.show();
-    return a.exec();
+	AppEngine a(argc, argv);
+	return a.Exec();
 }
