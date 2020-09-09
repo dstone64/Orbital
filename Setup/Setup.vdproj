@@ -159,12 +159,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_859ACFBDB67847D0B23CA8AD3C26F9C0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_8671869128DB40D4BE244B5DF9021EA5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -172,6 +166,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8A009D3A549E407FA63089B39C4ACDEB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8CE5CEEEC68F4E5C8E5A72740204AAE9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -307,6 +307,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -323,6 +331,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -850,6 +874,26 @@
             "TargetName" = "8:qt_fi.qm"
             "Tag" = "8:"
             "Folder" = "8:_800D376B65F3407199DA384B69B06FEC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CE5CEEEC68F4E5C8E5A72740204AAE9"
+            {
+            "SourcePath" = "8:..\\Orbital_rm.pdf"
+            "TargetName" = "8:Orbital_rm.pdf"
+            "Tag" = "8:"
+            "Folder" = "8:_56374FF8AF6040ACB19D1A446F34FFD1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1400,7 +1444,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{995E56AB-0D52-45BA-87A2-07FB85BF04DB}"
-        "PackageCode" = "8:{F2848223-8713-4693-84B5-AAB00F23842C}"
+        "PackageCode" = "8:{D5FB08A7-1BAE-4E67-A47F-AC0F616E2621}"
         "UpgradeCode" = "8:{EF5BCF65-72B5-4750-8F1E-7315CE797416}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1520,7 +1564,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_51E36256A1774F89A62BD15EC7B21152"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4A0FF660F8DE42458220ABE7616DE67A"
             {
             "Name" = "8:Orbital"
             "Arguments" = "8:"
@@ -1528,13 +1572,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_859ACFBDB67847D0B23CA8AD3C26F9C0"
-            "Folder" = "8:_E3DFEADA98EA4CCBB1C1BC173600379D"
+            "Target" = "8:_5D9E92D16FE647E0A262694506DC1DFF"
+            "Folder" = "8:_0BC744FA25A845FCB8B79C6A202789DC"
             "WorkingFolder" = "8:_56374FF8AF6040ACB19D1A446F34FFD1"
             "Icon" = "8:_6FFFE544A4FC4BA98CFBA4F655F3214D"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_72997E1CC48840389BD40121FA62AD79"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89E9FBC8F0904442A80F95231D596DBC"
             {
             "Name" = "8:Orbital"
             "Arguments" = "8:"
@@ -1542,8 +1586,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_859ACFBDB67847D0B23CA8AD3C26F9C0"
-            "Folder" = "8:_0BC744FA25A845FCB8B79C6A202789DC"
+            "Target" = "8:_5D9E92D16FE647E0A262694506DC1DFF"
+            "Folder" = "8:_E3DFEADA98EA4CCBB1C1BC173600379D"
             "WorkingFolder" = "8:_56374FF8AF6040ACB19D1A446F34FFD1"
             "Icon" = "8:_6FFFE544A4FC4BA98CFBA4F655F3214D"
             "Feature" = "8:"
@@ -1947,7 +1991,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_859ACFBDB67847D0B23CA8AD3C26F9C0"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5D9E92D16FE647E0A262694506DC1DFF"
             {
             "SourcePath" = "8:..\\Release\\Orbital.exe"
             "TargetName" = "8:"
@@ -1967,7 +2011,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Win32"
+            "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}"
             "ShowKeyOutput" = "11:TRUE"
