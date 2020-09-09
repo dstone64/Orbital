@@ -6,8 +6,8 @@
 #include <QVector>
 #include "GridPoint.h"
 
-#define RECFN_MSG          "sendMsg"             // sendMsg(msg, append=False)
-#define RECFN_INIT         "sendInit"            // sendInit(n_plots/plot_arrangement, parameters, visa_resources=Null)
+#define RECFN_MSG          "msg"                 // sendMsg(msg, append=False)
+#define RECFN_INIT         "init"                // sendInit(n_plots/plot_arrangement, parameters, visa_resources=Null)
 #define RECFN_DATA         "sendData"            // sendData(data_set, n_data, data0, data1, ...)
 #define RECFN_XDATA        "sendXData"           // sendXData(data_set, x_data, y_data, save=False)
 #define RECFN_DATAINFO     "setDataInfo"         // setDataInfo(data_set, info)
