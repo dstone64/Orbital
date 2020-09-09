@@ -4,7 +4,7 @@
 #include "QCustomContainer.h"
 
 #define QCOLOR_NONE Qt::GlobalColor::color0
-#define PLOT_DEFAULT_DIMENSION 400
+#define PLOT_DEFAULT_DIMENSION 100
 #define PLOT_MAX_DIMENSION 2000
 
 #define PLOTS_MAX_ROWS 8

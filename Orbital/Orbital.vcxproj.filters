@@ -37,6 +37,9 @@
     <Filter Include="Python Files">
       <UniqueIdentifier>{762ca9ee-0c0f-46d8-a254-98bf7568903b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Python Files\Example Scripts">
+      <UniqueIdentifier>{83be7d0d-9878-46c5-91d0-2b4d5cdd03a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="AppMainWindow.qrc">

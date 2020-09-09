@@ -96,7 +96,7 @@ PyMethodDef pyMethodTable[] =
 		RECFN_CMSHOW,
 		RecFn_CMShow,
 		METH_VARARGS,
-		"showColormap(show=True)"
+		"showColormap(plot_id, show=True)"
 		"\nToggles between the colormap and 2D plot."
 	},
 	{
@@ -418,7 +418,7 @@ PyObject * RecFn_XData(PyObject * self, PyObject * args)
 	Py_ssize_t dataX_sz, dataY_sz, data_sz;
 	QVector<double> *dx;
 	QVector<double> *dy;
-	bool save = false;
+	bool save = true;
 
 	if (!PyArg_ParseTuple(args, "IOO|O", &nGraph, &dataX, &dataY, &pyBool)) {
 		return NULL;
@@ -434,8 +434,8 @@ PyObject * RecFn_XData(PyObject * self, PyObject * args)
 			PyErr_SetString(PyExc_RuntimeError, "Could not parse bool value [sendXData]");
 			return NULL;
 		}
-		if (pyBoolVal == 1)
-			save = true;
+		if (pyBoolVal != 1)
+			save = false;
 	}
 
 	dataX_sz = PyList_Size(dataX);
