@@ -7,5 +7,5 @@ necessary features for graphing and data collection. See the manual for more det
 * * *
 ## Requirements
 
-- **Python 3 (32-bit)** (preferably 3.7+)
+- **Python 3.7+ (32-bit)**
 - **Windows 10**
