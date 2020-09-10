@@ -153,6 +153,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7DB404126D54411B90074D3045AAF7D8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_859AC7D3FE014F1C92DD0123D0C5DB74"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -219,6 +225,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B504E8EC27264C5CA9C94A227D00E10C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BECBFD3204C34AC8B108BDE7D98EF9BE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -238,6 +250,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D5B26F7FA5644D4BBCF3DCE3FD9AAC8A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E0C6AC4D36F3450F9715DBC0256CB21A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -836,6 +854,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7DB404126D54411B90074D3045AAF7D8"
+            {
+            "SourcePath" = "8:..\\Orbital\\scripts\\examples\\2DPlotSimple.py"
+            "TargetName" = "8:2DPlotSimple.py"
+            "Tag" = "8:"
+            "Folder" = "8:_1AB9EDBF03A34992BDE4C1745D7CF997"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_859AC7D3FE014F1C92DD0123D0C5DB74"
             {
             "SourcePath" = "8:..\\Release\\imageformats\\qgif.dll"
@@ -1056,6 +1094,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B504E8EC27264C5CA9C94A227D00E10C"
+            {
+            "SourcePath" = "8:..\\Orbital\\scripts\\examples\\Colormap.py"
+            "TargetName" = "8:Colormap.py"
+            "Tag" = "8:"
+            "Folder" = "8:_1AB9EDBF03A34992BDE4C1745D7CF997"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BECBFD3204C34AC8B108BDE7D98EF9BE"
             {
             "SourcePath" = "8:..\\Release\\libGLESV2.dll"
@@ -1122,6 +1180,26 @@
             "TargetName" = "8:qico.dll"
             "Tag" = "8:"
             "Folder" = "8:_19B1B4F329524820BCD7D31ECFF94C70"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0C6AC4D36F3450F9715DBC0256CB21A"
+            {
+            "SourcePath" = "8:..\\Orbital\\scripts\\examples\\2DPlotAdvanced.py"
+            "TargetName" = "8:2DPlotAdvanced.py"
+            "Tag" = "8:"
+            "Folder" = "8:_1AB9EDBF03A34992BDE4C1745D7CF997"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1452,7 +1530,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Orbital"
         "ProductCode" = "8:{995E56AB-0D52-45BA-87A2-07FB85BF04DB}"
-        "PackageCode" = "8:{C41EDFCB-D72B-4571-A4D3-0B2BC8381055}"
+        "PackageCode" = "8:{D8224909-6743-4CC6-82FE-077BE66356D6}"
         "UpgradeCode" = "8:{EF5BCF65-72B5-4750-8F1E-7315CE797416}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
