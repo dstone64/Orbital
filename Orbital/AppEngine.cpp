@@ -770,9 +770,9 @@ void AppEngine::Slot_StopModule()
 
 void AppEngine::Slot_CustomControl(size_t cc)
 {
-	this->appUI.EnableControl_Custom(cc, false);
+	this->appUI.EnableControl_Custom(cc + 1, false);
 	if (this->pyEngine.Custom(cc)) {
-		this->appUI.EnableControl_Custom(cc, true);
+		this->appUI.EnableControl_Custom(cc + 1, true);
 	}
 }
 
