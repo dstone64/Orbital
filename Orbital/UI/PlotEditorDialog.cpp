@@ -160,12 +160,12 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterStyle(size_t p
 	return PlotEditError::NONE;
 }
 
-PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterSize(size_t plotIdx, double ssz)
+PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterSize(size_t plotIdx, const QString& ssz)
 {
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::sszOptions.indexOfValue(ssz);
+	int idx = AppPlot::sszOptions.indexOfKey(ssz);
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -179,7 +179,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_Color(size_t plotIdx,
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -307,7 +307,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ColorMin(size_t plotI
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -335,7 +335,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ColorMax(size_t plotI
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 

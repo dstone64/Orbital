@@ -45,7 +45,7 @@ public:
 	PlotEditError EditPlot_YLabel2D(size_t plotIdx, const QString& label);
 	PlotEditError EditPlot_LineStyle(size_t plotIdx, const QString& ls);
 	PlotEditError EditPlot_ScatterStyle(size_t plotIdx, const QString& ss);
-	PlotEditError EditPlot_ScatterSize(size_t plotIdx, double ssz);
+	PlotEditError EditPlot_ScatterSize(size_t plotIdx, const QString& ssz);
 	PlotEditError EditPlot_Color(size_t plotIdx, const QString& color);
 
 	PlotEditError EditPlot_ShowCM(size_t plotIdx, bool show);

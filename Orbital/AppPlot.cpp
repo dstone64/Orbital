@@ -490,18 +490,16 @@ void AppPlot::setPlot2D_lineStyle(QCPGraph::LineStyle ls)
 void AppPlot::setPlot2D_scatterStyle(QCPScatterStyle::ScatterShape shape)
 {
 	QCPScatterStyle ss = this->plot2D->getScatStyle();
-
 	ss.setShape(shape);
-	//this->plot2D->setScatStyle(ss);
+	this->plot2D->setScatStyle(ss);
 	this->queuedForRedraw = true;
 }
 
 void AppPlot::setPlot2D_scatterSize(double size)
 {
 	QCPScatterStyle ss = this->plot2D->getScatStyle();
-
 	ss.setSize(size);
-	//this->plot2D->setScatStyle(ss);
+	this->plot2D->setScatStyle(ss);
 	this->queuedForRedraw = true;
 }
 
@@ -538,27 +536,24 @@ void AppPlot::setPlotCM_zLabel(const QString& s)
 void AppPlot::setPlotCM_colorMin(Qt::GlobalColor c)
 {
 	QCPColorGradient colorGradient = this->plotCM->getColor();
-
 	colorGradient.setColorStopAt(0, c);
-	//this->plotCM->setColor(colorGradient);
+	this->plotCM->setColor(colorGradient);
 	this->queuedForRedraw = true;
 }
 
 void AppPlot::setPlotCM_colorMid(Qt::GlobalColor c)
 {
 	QCPColorGradient colorGradient = this->plotCM->getColor();
-
 	colorGradient.setColorStopAt(0.5, c);
-	//this->plotCM->setColor(colorGradient);
+	this->plotCM->setColor(colorGradient);
 	this->queuedForRedraw = true;
 }
 
 void AppPlot::setPlotCM_colorMax(Qt::GlobalColor c)
 {
 	QCPColorGradient colorGradient = this->plotCM->getColor();
-
 	colorGradient.setColorStopAt(1, c);
-	//this->plotCM->setColor(colorGradient);
+	this->plotCM->setColor(colorGradient);
 	this->queuedForRedraw = true;
 }
 

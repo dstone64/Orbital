@@ -9,6 +9,7 @@ AppUI::AppUI(QObject *parent) :
 		{ PLOTPROPERTY_LABELY, &PlotEditorDialog::EditPlot_YLabel2D },
 		{ PLOTPROPERTY_LINESTYLE, &PlotEditorDialog::EditPlot_LineStyle },
 		{ PLOTPROPERTY_SCATSTYLE, &PlotEditorDialog::EditPlot_ScatterStyle },
+		{ PLOTPROPERTY_SCATSIZE, &PlotEditorDialog::EditPlot_ScatterSize },
 		{ PLOTPROPERTY_COLOR, &PlotEditorDialog::EditPlot_Color }}),
 	editablePlotProperties_CM({
 		{ PLOTPROPERTY_TITLE, &PlotEditorDialog::EditPlot_TitleCM },

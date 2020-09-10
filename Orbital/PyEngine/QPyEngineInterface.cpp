@@ -12,14 +12,14 @@ PyMethodDef pyMethodTable[] =
 		RECFN_MSG,
 		RecFn_Msg,
 		METH_VARARGS,
-		"sendMsg(msg, append=False)"
+		"msg(msg, append=False)"
 		"\nSends a message to the UI."
 	},
 	{
 		RECFN_INIT,
 		RecFn_Init,
 		METH_VARARGS,
-		"sendInit(n_plots OR plot_arrangement, parameters, visa_resources=Null)"
+		"init(n_plots OR plot_arrangement, parameters, visa_resources=Null)"
 		"\nInitializes the client for the loaded script."
 	},
 	{
