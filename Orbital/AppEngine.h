@@ -62,6 +62,7 @@ public Q_SLOTS:
 	void Slot_CustomControl(size_t cc);
 	void Slot_CreateNewScript(const QString& filename);
 	void Slot_ExampleScript(unsigned int scriptID);
+	void Slot_ReferenceManual();
 	void Slot_ParamsImport(const QString& filename);
 	void Slot_ParamsExport(const QString& filename);
 	void Slot_PlotEditor_UpdateArrangement(const QVector<GridPoint>& plotArrangement);

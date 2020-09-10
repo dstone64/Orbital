@@ -98,6 +98,7 @@ Q_SIGNALS:
 	void Signal_UpdatePythonPath();
 	void Signal_Save(const QString&, const QVector<bool>&, bool timeStamp);
 	void Signal_ExampleScript(unsigned int scriptID);
+	void Signal_ReferenceManual();
 
 private:
 	AppMainWindow * mainWindow;

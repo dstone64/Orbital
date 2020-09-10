@@ -39,6 +39,7 @@ AppUI::AppUI(QObject *parent) :
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ParamsImport, [=](const QString& f) { emit Signal_ParamsImport(f); });
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ParamsExport, [=](const QString& f) { emit Signal_ParamsExport(f); });
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ExampleScript, [=](unsigned int n) { emit Signal_ExampleScript(n); });
+	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ReferenceManual, [=] { emit Signal_ReferenceManual(); });
 
 	QObject::connect(this->mainWindow->Action_PlotEditor(), &QAction::triggered, this->plotEditorDialog, &PlotEditorDialog::open);
 	QObject::connect(this->mainWindow->Action_ErrorLog(), &QAction::triggered, this->errorLogDialog, &ErrorLogDialog::open);
