@@ -29,7 +29,7 @@ public:
 	void SetPlotArrangement(const QVector<GridPoint>& plotArrangement, int minW, int minH);
 	void SetPlotProperties(size_t pIdx, const PlotProperties& p);
 	PLOT_ERR_CODE EditPlotProperty(size_t pIdx, PlotType pt, const QString& prop, const QString& val);
-	PLOT_ERR_CODE SetupColormap(size_t pIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize);
+	PLOT_ERR_CODE SetupColormap(size_t pIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax);
 	PLOT_ERR_CODE ShowColormap(size_t pIdx, bool show);
 	void Clear();
 	void AddData2D(size_t pIdx, double x, double y);

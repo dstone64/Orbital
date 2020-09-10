@@ -13,7 +13,13 @@
 
 #define SCRIPTDEFAULT L"scripts\\ScriptSkeleton.py"
 #define SCRIPTEXAMPLES "scripts\\examples"
+#ifdef _DEBUG
+#define CONFIGFILE L"..\\Orbital.ini"
+#define REFMANUALFILE L"..\\Orbital_rm.pdf"
+#else
 #define CONFIGFILE L"Orbital.ini"
+#define REFMANUALFILE L"Orbital_rm.pdf"
+#endif
 
 AppEngine::AppEngine(int argc, char *argv[])
 try :
@@ -67,6 +73,7 @@ try :
 	QCONNECT_UI(CustomControl);
 	QCONNECT_UI(CreateNewScript);
 	QCONNECT_UI(ExampleScript);
+	QCONNECT_UI(ReferenceManual);
 	QCONNECT_UI(PlotEditor_UpdateArrangement);
 	QCONNECT_UI(PlotEditor_UpdateProperties);
 	QCONNECT_UI(UpdateDataInfo);
@@ -539,12 +546,12 @@ void AppEngine::Slot_CMData(unsigned int graphID, unsigned int xIdx, unsigned in
 	this->plotManager->AddDataCM(graphID - 1, xIdx, yIdx, z);
 }
 
-void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool show)
+void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
 {
 	if (graphID == 0)
 		return;
 
-	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize)) {
+	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -555,7 +562,7 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 		return;
 	}
 
-	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize)) {
+	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;
@@ -793,6 +800,15 @@ void AppEngine::Slot_ExampleScript(unsigned int scriptID)
 	Slot_LoadModule(this->exampleScripts.at(scriptID));
 }
 
+int OpenReferenceManual();
+
+void AppEngine::Slot_ReferenceManual()
+{
+	if (OpenReferenceManual() <= 32) {
+		ErrorOutput("ERROR: Could not open reference manual.\n");
+	}
+}
+
 void AppEngine::Slot_ParamsImport(const QString& filename)
 {
 	this->settings.parameters.file = filename;
@@ -889,6 +905,28 @@ int ExecutePythonIDLE(const TCHAR * filename)
 
 	free(cmdLine);
 	return 0;
+}
+
+int OpenReferenceManual()
+{
+	WCHAR szPath[MAX_PATH];
+	DWORD p;
+	std::wstring rmFile;
+
+	if ((p = GetModuleFileName(NULL, szPath, MAX_PATH)) == 0) {
+		return -1;
+	}
+	while (szPath[--p] != '\\') szPath[p] = 0;
+	rmFile = std::wstring(szPath).append(REFMANUALFILE);
+
+	return (int)ShellExecute(
+		NULL,
+		L"open",
+		rmFile.c_str(),
+		NULL,
+		NULL,
+		SW_SHOWDEFAULT
+	);
 }
 
 std::string GetTimeStr()

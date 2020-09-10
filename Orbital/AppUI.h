@@ -78,7 +78,7 @@ public:
 
 	QGridLayout * PlotLayout() const { return this->mainWindow->PlotLayout(); }
 	UI_ERR_CODE EditPlotProperty(size_t plotIdx, PlotType type, const QString& prop, const QString& val);
-	UI_ERR_CODE SetupColormap(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize);
+	UI_ERR_CODE SetupColormap(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax);
 	UI_ERR_CODE ShowColormap(size_t plotIdx, bool show);
 	UI_ERR_CODE SetPlotArrangement(const QVector<GridPoint>& plotArrangement);
 	UI_ERR_CODE GetPlotProperties(size_t plotIdx, PlotProperties& plotProperties) const;
@@ -98,6 +98,7 @@ Q_SIGNALS:
 	void Signal_UpdatePythonPath();
 	void Signal_Save(const QString&, const QVector<bool>&, bool timeStamp);
 	void Signal_ExampleScript(unsigned int scriptID);
+	void Signal_ReferenceManual();
 
 private:
 	AppMainWindow * mainWindow;

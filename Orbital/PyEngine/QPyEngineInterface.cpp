@@ -12,14 +12,14 @@ PyMethodDef pyMethodTable[] =
 		RECFN_MSG,
 		RecFn_Msg,
 		METH_VARARGS,
-		"sendMsg(msg, append=False)"
+		"msg(msg, append=False)"
 		"\nSends a message to the UI."
 	},
 	{
 		RECFN_INIT,
 		RecFn_Init,
 		METH_VARARGS,
-		"sendInit(n_plots OR plot_arrangement, parameters, visa_resources=Null)"
+		"init(n_plots OR plot_arrangement, parameters, visa_resources=Null)"
 		"\nInitializes the client for the loaded script."
 	},
 	{
@@ -304,7 +304,7 @@ PyObject * RecFn_Msg(PyObject * self, PyObject * args)
 	if (pyBool != NULL) {
 		int pyBoolVal = PyObject_IsTrue(pyBool);
 		if (pyBoolVal < 0) {
-			PyErr_SetString(PyExc_RuntimeError, "Could not parse bool value [sendMsg]");
+			PyErr_SetString(PyExc_RuntimeError, "Could not parse bool value [msg]");
 			return NULL;
 		}
 		if (pyBoolVal == 1)
@@ -332,7 +332,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 	}
 
 	if (!PyList_Check(paramList)) {
-		PyErr_SetString(PyExc_RuntimeError, "Parameters not received as list [sendInit]");
+		PyErr_SetString(PyExc_RuntimeError, "Parameters not received as list [init]");
 		return NULL;
 	}
 	if (paramList != NULL) {
@@ -346,7 +346,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 
 	if (visaTuple != NULL) {
 		if (!PyTuple_Check(visaTuple)) {
-			PyErr_SetString(PyExc_RuntimeError, "Visa resources not received as tuple [sendInit]");
+			PyErr_SetString(PyExc_RuntimeError, "Visa resources not received as tuple [init]");
 			return NULL;
 		}
 		Py_ssize_t sz = PyTuple_Size(visaTuple);
@@ -359,7 +359,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 
 	if (plotArrng != NULL) {
 		if (!PyList_Check(plotArrng)) {
-			PyErr_SetString(PyExc_RuntimeError, "Could not parse first argument [sendInit]");
+			PyErr_SetString(PyExc_RuntimeError, "Could not parse first argument [init]");
 			return NULL;
 		}
 
@@ -370,17 +370,17 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 			PyObject * listItem = PyList_GetItem(plotArrng, i);
 
 			if (!PyList_Check(listItem)) {
-				PyErr_SetString(PyExc_RuntimeError, "Invalid object in plot arrangement list [sendInit]");
+				PyErr_SetString(PyExc_RuntimeError, "Invalid object in plot arrangement list [init]");
 				return NULL;
 			}
 			if (PyList_Size(listItem) != 4) {
-				PyErr_SetString(PyExc_RuntimeError, "Invalid plot arrangement [sendInit]");
+				PyErr_SetString(PyExc_RuntimeError, "Invalid plot arrangement [init]");
 				return NULL;
 			}
 			for (Py_ssize_t j = 0; j < 4; ++j) {
 				PyObject *p = PyList_GetItem(listItem, j);
 				if (!PyLong_CheckExact(p)) {
-					PyErr_SetString(PyExc_RuntimeError, "Invalid object in plot arrangement list [sendInit]");
+					PyErr_SetString(PyExc_RuntimeError, "Invalid object in plot arrangement list [init]");
 					return NULL;
 				}
 				gp[j] = (int)PyLong_AsLong(p);
@@ -587,12 +587,17 @@ PyObject * RecFn_CMData(PyObject * self, PyObject * args)
 PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 {
 	unsigned int graphID = 0, xSize = 0, ySize = 0;
-	double xMin = 0, xMax = 0, yMin = 0, yMax = 0;
+	double xMin = 0, xMax = 0, yMin = 0, yMax = 0, zMin = 0, zMax = 0;
 	PyObject *pyBool = NULL;
 	bool show = true;
+	bool zRange = true;
 
-	if (!PyArg_ParseTuple(args, "IddddII|O", &graphID, &xMin, &xMax, &yMin, &yMax, &xSize, &ySize, &pyBool)) {
-		return NULL;
+	if (!PyArg_ParseTuple(args, "IddddIIdd|O", &graphID, &xMin, &xMax, &yMin, &yMax, &xSize, &ySize, &zMin, &zMax, &pyBool)) {
+		PyErr_Clear();
+		zRange = false;
+		if (!PyArg_ParseTuple(args, "IddddII|O", &graphID, &xMin, &xMax, &yMin, &yMax, &xSize, &ySize, &pyBool)) {
+			return NULL;
+		}
 	}
 
 	if (pyBool != NULL) {
@@ -605,7 +610,7 @@ PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 			show = false;
 	}
 
-	emit QPyEngineInterface::hInstance->Signal_CMSetup(graphID, xMin, xMax, yMin, yMax, xSize, ySize, show);
+	emit QPyEngineInterface::hInstance->Signal_CMSetup(graphID, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax, show);
 	Py_RETURN_NONE;
 }
 

@@ -12,6 +12,7 @@ AppMainWindow::AppMainWindow(QWidget *parent)
 	CustomControlPanelSetup();
 
 	QObject::connect(this->ui.actionCreate_New, &QAction::triggered, this, &AppMainWindow::Slot_CreateNewScript);
+	QObject::connect(this->ui.actionReference_Manual, &QAction::triggered, [=] { emit Signal_ReferenceManual(); });
 }
 
 void AppMainWindow::AddExampleScript(unsigned int scriptID, const QString& script)

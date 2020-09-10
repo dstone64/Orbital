@@ -160,12 +160,12 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterStyle(size_t p
 	return PlotEditError::NONE;
 }
 
-PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterSize(size_t plotIdx, double ssz)
+PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ScatterSize(size_t plotIdx, const QString& ssz)
 {
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::sszOptions.indexOfValue(ssz);
+	int idx = AppPlot::sszOptions.indexOfKey(ssz);
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -179,7 +179,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_Color(size_t plotIdx,
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -198,7 +198,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ShowCM(size_t plotIdx
 	return PlotEditError::NONE;
 }
 
-PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_SetupCM(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize)
+PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_SetupCM(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax)
 {
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
@@ -212,6 +212,12 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_SetupCM(size_t plotId
 	this->tabs.at(plotIdx)->tabItems.colorMap.dataSize->lineEdit_min->setText(QString::number(xSize));
 	this->tabs.at(plotIdx)->tabItems.colorMap.dataSize->lineEdit_max->setText(QString::number(ySize));
 	this->tabs.at(plotIdx)->tabItems.colorMap.dataSize->Set();
+	if (zRange) {
+		this->tabs.at(plotIdx)->tabItems.colorMap.zRange->lineEdit_min->setText(QString::number(zMin));
+		this->tabs.at(plotIdx)->tabItems.colorMap.zRange->lineEdit_max->setText(QString::number(zMax));
+		this->tabs.at(plotIdx)->tabItems.colorMap.zRange->checkBox->setChecked(true);
+		this->tabs.at(plotIdx)->tabItems.colorMap.zRange->Set();
+	}
 	this->tabs.at(plotIdx)->tabItems.colorMap.show->checkBox->setChecked(true);
 	this->tabs.at(plotIdx)->tabItems.colorMap.show->resetVal = true;
 	return PlotEditError::NONE;
@@ -307,7 +313,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ColorMin(size_t plotI
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 
@@ -335,7 +341,7 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::EditPlot_ColorMax(size_t plotI
 	if (plotIdx >= this->tabs.size())
 		return PlotEditError::INDEX_OUT_OF_RANGE;
 
-	int idx = AppPlot::colorOptions.indexOfKey(color);
+	int idx = AppPlot::colorOptions.indexOfKey(color) - 1;
 	if (idx < 0)
 		return PlotEditError::NO_SUCH_VALUE;
 

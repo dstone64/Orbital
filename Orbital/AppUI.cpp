@@ -9,6 +9,7 @@ AppUI::AppUI(QObject *parent) :
 		{ PLOTPROPERTY_LABELY, &PlotEditorDialog::EditPlot_YLabel2D },
 		{ PLOTPROPERTY_LINESTYLE, &PlotEditorDialog::EditPlot_LineStyle },
 		{ PLOTPROPERTY_SCATSTYLE, &PlotEditorDialog::EditPlot_ScatterStyle },
+		{ PLOTPROPERTY_SCATSIZE, &PlotEditorDialog::EditPlot_ScatterSize },
 		{ PLOTPROPERTY_COLOR, &PlotEditorDialog::EditPlot_Color }}),
 	editablePlotProperties_CM({
 		{ PLOTPROPERTY_TITLE, &PlotEditorDialog::EditPlot_TitleCM },
@@ -38,6 +39,7 @@ AppUI::AppUI(QObject *parent) :
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ParamsImport, [=](const QString& f) { emit Signal_ParamsImport(f); });
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ParamsExport, [=](const QString& f) { emit Signal_ParamsExport(f); });
 	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ExampleScript, [=](unsigned int n) { emit Signal_ExampleScript(n); });
+	QObject::connect(this->mainWindow, &AppMainWindow::Signal_ReferenceManual, [=] { emit Signal_ReferenceManual(); });
 
 	QObject::connect(this->mainWindow->Action_PlotEditor(), &QAction::triggered, this->plotEditorDialog, &PlotEditorDialog::open);
 	QObject::connect(this->mainWindow->Action_ErrorLog(), &QAction::triggered, this->errorLogDialog, &ErrorLogDialog::open);
@@ -260,9 +262,9 @@ AppUI::UI_ERR_CODE AppUI::EditPlotProperty(size_t plotIdx, PlotType type, const 
 	return UI_ERR_CODE::UNDEFINED_ERROR;
 }
 
-AppUI::UI_ERR_CODE AppUI::SetupColormap(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize)
+AppUI::UI_ERR_CODE AppUI::SetupColormap(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax)
 {
-	switch (this->plotEditorDialog->EditPlot_SetupCM(plotIdx, xMin, xMax, yMin, yMax, xSize, ySize)) {
+	switch (this->plotEditorDialog->EditPlot_SetupCM(plotIdx, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case PlotEditorDialog::PlotEditError::NONE:
 		return UI_ERR_CODE::NONE;
 	case PlotEditorDialog::PlotEditError::INDEX_OUT_OF_RANGE:

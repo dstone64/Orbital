@@ -969,6 +969,7 @@
      <string>Help</string>
     </property>
     <addaction name="actionError_Log"/>
+    <addaction name="actionReference_Manual"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuScript"/>
@@ -1023,6 +1024,11 @@
   <action name="actionReload">
    <property name="text">
     <string>Reload</string>
+   </property>
+  </action>
+  <action name="actionReference_Manual">
+   <property name="text">
+    <string>Reference Manual</string>
    </property>
   </action>
  </widget>

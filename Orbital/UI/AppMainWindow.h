@@ -52,6 +52,7 @@ Q_SIGNALS:
 	void Signal_ParamsImport(const QString& filename);
 	void Signal_ParamsExport(const QString& filename);
 	void Signal_ExampleScript(unsigned int id);
+	void Signal_ReferenceManual();
 
 public Q_SLOTS:
 	void on_pushButton_load_clicked();

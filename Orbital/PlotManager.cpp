@@ -100,13 +100,15 @@ PlotManager::PLOT_ERR_CODE PlotManager::EditPlotProperty(size_t pIdx, PlotType p
 	return (this->*editFn)(pIdx, val);
 }
 
-PlotManager::PLOT_ERR_CODE PlotManager::SetupColormap(size_t pIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize)
+PlotManager::PLOT_ERR_CODE PlotManager::SetupColormap(size_t pIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax)
 {
 	if (pIdx >= this->plotVector.size())
 		return PLOT_ERR_CODE::INDEX_OUT_OF_RANGE;
 
 	this->plotVector.at(pIdx)->setPlotCM_range(xMin, xMax, yMin, yMax);
 	this->plotVector.at(pIdx)->setPlotCM_size(xSize, ySize);
+	if (zRange)
+		this->plotVector.at(pIdx)->setPlotCM_rangeZ(zMin, zMax);
 	if (this->plotVector.at(pIdx)->showing() != PlotType::COLORMAP)
 		this->plotVector.at(pIdx)->swap();
 	return PLOT_ERR_CODE::NONE;
