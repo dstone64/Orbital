@@ -90,7 +90,7 @@ Q_SIGNALS:
 	void Signal_SaveData(unsigned int, const QString&);
 	void Signal_ClearData(unsigned int);
 	void Signal_CMData(unsigned int, unsigned int, unsigned int, double);
-	void Signal_CMSetup(unsigned int, double, double, double, double, unsigned int, unsigned int, bool);
+	void Signal_CMSetup(unsigned int, double, double, double, double, unsigned int, unsigned int, bool, double, double, bool);
 	void Signal_CMShow(unsigned int, bool);
 	void Signal_CustomFnName(unsigned int, QString);
 	void Signal_AutoSaveConfig(bool, QString);

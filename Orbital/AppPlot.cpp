@@ -407,7 +407,7 @@ void AppPlot::redraw()
 			this->plot2D->getPlot()->replot();
 			break;
 		case PlotType::COLORMAP:
-			if (this->autoRescaleAxesCM) {
+			if (this->autoRescaleDataCM) {
 				this->plotCM->getMap()->rescaleDataRange();
 			}
 			if (this->autoRescaleAxesCM) {
@@ -442,7 +442,7 @@ void AppPlot::updateProperties(const PlotProperties& p)
 		QCPRange(p.colorMap.xRange[0], p.colorMap.xRange[1]),
 		QCPRange(p.colorMap.yRange[0], p.colorMap.yRange[1])
 	);
-	this->autoRescaleDataCM = p.colorMap.manualZRange;
+	this->autoRescaleDataCM = !p.colorMap.manualZRange;
 	if (p.colorMap.manualZRange)
 		this->plotCM->setRangeZ(QCPRange(p.colorMap.zRange[0], p.colorMap.zRange[1]));
 	QCPColorGradient colorGradient;
@@ -563,6 +563,13 @@ void AppPlot::setPlotCM_range(double xMin, double xMax, double yMin, double yMax
 		QCPRange(xMin, xMax),
 		QCPRange(yMin, yMax)
 	);
+	this->queuedForRedraw = true;
+}
+
+void AppPlot::setPlotCM_rangeZ(double zMin, double zMax, bool autoRescaleData)
+{
+	this->plotCM->setRangeZ(QCPRange(zMin, zMax));
+	this->autoRescaleDataCM = autoRescaleData;
 	this->queuedForRedraw = true;
 }
 

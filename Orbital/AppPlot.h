@@ -238,6 +238,7 @@ public:
 	void setPlotCM_colorMid(Qt::GlobalColor c);
 	void setPlotCM_colorMax(Qt::GlobalColor c);
 	void setPlotCM_range(double xMin, double xMax, double yMin, double yMax);
+	void setPlotCM_rangeZ(double zMin, double zMax, bool autoRescaleData = false);
 	void setPlotCM_size(int xSize, int ySize);
 
 	void addData(double x, double y);

@@ -539,12 +539,12 @@ void AppEngine::Slot_CMData(unsigned int graphID, unsigned int xIdx, unsigned in
 	this->plotManager->AddDataCM(graphID - 1, xIdx, yIdx, z);
 }
 
-void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool show)
+void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
 {
 	if (graphID == 0)
 		return;
 
-	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize)) {
+	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -555,7 +555,7 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 		return;
 	}
 
-	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize)) {
+	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;

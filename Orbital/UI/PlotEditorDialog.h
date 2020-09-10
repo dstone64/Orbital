@@ -49,7 +49,7 @@ public:
 	PlotEditError EditPlot_Color(size_t plotIdx, const QString& color);
 
 	PlotEditError EditPlot_ShowCM(size_t plotIdx, bool show);
-	PlotEditError EditPlot_SetupCM(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize);
+	PlotEditError EditPlot_SetupCM(size_t plotIdx, double xMin, double xMax, double yMin, double yMax, int xSize, int ySize, bool zRange, double zMin, double zMax);
 	PlotEditError EditPlot_TitleCM(size_t plotIdx, const QString& title);
 	PlotEditError EditPlot_XLabelCM(size_t plotIdx, const QString& label);
 	PlotEditError EditPlot_YLabelCM(size_t plotIdx, const QString& label);
