@@ -262,6 +262,18 @@
     <None Include="Resources\Orbital.ini">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="scripts\examples\2DPlot_Advanced.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\2DPlot_Simple.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\2DPlot_XData.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\Colormap.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Orbital.ico">

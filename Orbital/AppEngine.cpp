@@ -71,6 +71,8 @@ try :
 	QCONNECT_UI(RunModule);
 	QCONNECT_UI(StopModule);
 	QCONNECT_UI(CustomControl);
+	QCONNECT_UI(ParamsExport);
+	QCONNECT_UI(ParamsImport);
 	QCONNECT_UI(CreateNewScript);
 	QCONNECT_UI(ExampleScript);
 	QCONNECT_UI(ReferenceManual);
@@ -155,7 +157,7 @@ void AppEngine::ScriptParameters_Import(const std::string& filename)
 	}
 
 	QVector<std::pair<QString, QString>> params;
-	std::regex re("^(\\w+):(.*)$");
+	std::regex re("^(.+):(.*)$");
 	std::smatch sm;
 	for (std::string line; getline(ifs, line); !ifs.eof() && !ifs.fail()) {
 		if (std::regex_match(line, sm, re)) {

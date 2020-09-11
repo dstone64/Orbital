@@ -193,6 +193,10 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Orbital.ini" />
+    <None Include="scripts\examples\2DPlot_Advanced.py" />
+    <None Include="scripts\examples\2DPlot_Simple.py" />
+    <None Include="scripts\examples\2DPlot_XData.py" />
+    <None Include="scripts\examples\Colormap.py" />
     <None Include="scripts\ScriptSkeleton.py" />
   </ItemGroup>
   <ItemGroup>
