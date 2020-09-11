@@ -274,6 +274,9 @@
     <None Include="scripts\examples\Colormap.py">
       <Filter>Python Files\Example Scripts</Filter>
     </None>
+    <None Include="scripts\examples\Colormap_Row.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Orbital.ico">

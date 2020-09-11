@@ -297,6 +297,15 @@ void QPlot_CM::setCell(int xIndex, int yIndex, double z)
 	this->map->data()->setCell(xIndex, yIndex, z);
 }
 
+void QPlot_CM::setRow(int yIndex, const QVector<qreal>& z)
+{
+	int xMax = this->map->data()->keySize() < z.size() ? this->map->data()->keySize() : z.size();
+
+	for (int xIndex = 0; xIndex < xMax; ++xIndex) {
+		this->map->data()->setCell(xIndex, yIndex, z[xIndex]);
+	}
+}
+
 void QPlot_CM::clear()
 {
 	this->map->data()->fill(this->map->colorScale()->dataRange().lower);
@@ -594,6 +603,12 @@ void AppPlot::addData(const QVector<qreal>& x, const QVector<qreal>& y, bool sor
 void AppPlot::setCell(int xIndex, int yIndex, double z)
 {
 	this->plotCM->setCell(xIndex, yIndex, z);
+	this->queuedForRedraw = true;
+}
+
+void AppPlot::setRow(int yIndex, const QVector<qreal>& z)
+{
+	this->plotCM->setRow(yIndex, z);
 	this->queuedForRedraw = true;
 }
 

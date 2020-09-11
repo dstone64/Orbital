@@ -17,6 +17,7 @@
 #define RECFN_SAVE         "saveData"            // saveData(data_set, data_header)
 #define RECFN_CLEAR        "clearData"           // clearData(data_set)
 #define RECFN_CMDATA       "sendCMData"          // sendCMData(plot_id, x, y, val)
+#define RECFN_CMDATAROW    "sendCMDataRow"       // sendCMDataRow(plot_id, row, z_vals)
 #define RECFN_CMSETUP      "setupColormap"       // setupCM(plot_id, xMin, xMax, yMin, yMax, xSize, ySize, show=True)
 #define RECFN_CMSHOW       "showColormap"        // showColormap(plot_id, show=True)
 #define RECFN_CFNAME       "renameCustom"        // renameCustom(customFn, new_name)
@@ -90,6 +91,7 @@ Q_SIGNALS:
 	void Signal_SaveData(unsigned int, const QString&);
 	void Signal_ClearData(unsigned int);
 	void Signal_CMData(unsigned int, unsigned int, unsigned int, double);
+	void Signal_CMDataRow(unsigned int, unsigned int, QVector<double>*);
 	void Signal_CMSetup(unsigned int, double, double, double, double, unsigned int, unsigned int, bool, double, double, bool);
 	void Signal_CMShow(unsigned int, bool);
 	void Signal_CustomFnName(unsigned int, QString);
@@ -113,6 +115,7 @@ extern "C" {
 	PyObject * RecFn_Save(PyObject * self, PyObject * args);
 	PyObject * RecFn_Clear(PyObject * self, PyObject * args);
 	PyObject * RecFn_CMData(PyObject * self, PyObject * args);
+	PyObject * RecFn_CMDataRow(PyObject * self, PyObject * args);
 	PyObject * RecFn_CMSetup(PyObject * self, PyObject * args);
 	PyObject * RecFn_CMShow(PyObject * self, PyObject * args);
 	PyObject * RecFn_CFName(PyObject * self, PyObject * args);

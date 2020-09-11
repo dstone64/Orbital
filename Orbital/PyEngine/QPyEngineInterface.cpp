@@ -86,6 +86,13 @@ PyMethodDef pyMethodTable[] =
 		"\nPass colormap data to the UI for displaying."
 	},
 	{
+		RECFN_CMDATAROW,
+		RecFn_CMDataRow,
+		METH_VARARGS,
+		"sendCMDataRow(plot_id, row, z_vals)"
+		"\nPass row of colormap data to the UI for displaying."
+	},
+	{
 		RECFN_CMSETUP,
 		RecFn_CMSetup,
 		METH_VARARGS,
@@ -581,6 +588,45 @@ PyObject * RecFn_CMData(PyObject * self, PyObject * args)
 	}
 
 	emit QPyEngineInterface::hInstance->Signal_CMData(graphID, xIdx, yIdx, z);
+	Py_RETURN_NONE;
+}
+
+PyObject * RecFn_CMDataRow(PyObject * self, PyObject * args)
+{
+	unsigned int graphID = 0, row = 0;
+	PyObject *zList = NULL;
+	QVector<double> *z;
+	Py_ssize_t z_sz;
+
+	if (!PyArg_ParseTuple(args, "IIO", &graphID, &row, &zList)) {
+		return NULL;
+	}
+	if (!PyList_Check(zList)) {
+		PyErr_SetString(PyExc_RuntimeError, "Data not received as list [sendCMDataRow]");
+		return NULL;
+	}
+	
+	z_sz = PyList_Size(zList);
+	z = new QVector<double>(z_sz);
+	for (Py_ssize_t i = 0; i < z_sz; ++i) {
+		PyObject *listItem = PyList_GetItem(zList, i);
+		double zVal = 0;
+
+		if (PyFloat_Check(listItem)) {
+			zVal = PyFloat_AS_DOUBLE(listItem);
+		}
+		else if (PyLong_Check(listItem)) {
+			zVal = (double)PyLong_AsLong(listItem);
+		}
+		else {
+			PyErr_SetString(PyExc_RuntimeError, "List object not recognized as a numeric [sendCMDataRow]");
+			free(z);
+			return NULL;
+		}
+		(*z)[i] = zVal;
+	}
+
+	emit QPyEngineInterface::hInstance->Signal_CMDataRow(graphID, row, z);
 	Py_RETURN_NONE;
 }
 

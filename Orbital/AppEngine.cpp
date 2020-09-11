@@ -49,6 +49,7 @@ try :
 	QCONNECT_PY(SaveData);
 	QCONNECT_PY(ClearData);
 	QCONNECT_PY(CMData);
+	QCONNECT_PY(CMDataRow);
 	QCONNECT_PY(CMSetup);
 	QCONNECT_PY(CMShow);
 	QCONNECT_PY(CustomFnName);
@@ -543,17 +544,23 @@ void AppEngine::Slot_ClearData(unsigned int dataID)
 	this->dataManager.ClearData(dataID);
 }
 
-void AppEngine::Slot_CMData(unsigned int graphID, unsigned int xIdx, unsigned int yIdx, double z)
+void AppEngine::Slot_CMData(unsigned int plotID, unsigned int xIdx, unsigned int yIdx, double z)
 {
-	this->plotManager->AddDataCM(graphID - 1, xIdx, yIdx, z);
+	this->plotManager->AddDataCM(plotID - 1, xIdx, yIdx, z);
 }
 
-void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
+void AppEngine::Slot_CMDataRow(unsigned int plotID, unsigned int yIdx, QVector<double> * z)
 {
-	if (graphID == 0)
+	this->plotManager->AddDataCM(plotID - 1, yIdx, z);
+	delete z;
+}
+
+void AppEngine::Slot_CMSetup(unsigned int plotID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
+{
+	if (plotID == 0)
 		return;
 
-	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
+	switch (this->appUI.SetupColormap(plotID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -564,7 +571,7 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 		return;
 	}
 
-	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
+	switch (this->plotManager->SetupColormap(plotID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;
@@ -575,16 +582,16 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 	}
 
 	if (!show) {
-		Slot_CMShow(graphID, show);
+		Slot_CMShow(plotID, show);
 	}
 }
 
-void AppEngine::Slot_CMShow(unsigned int graphID, bool show)
+void AppEngine::Slot_CMShow(unsigned int plotID, bool show)
 {
-	if (graphID == 0)
+	if (plotID == 0)
 		return;
 
-	switch (this->appUI.ShowColormap(graphID - 1, show)) {
+	switch (this->appUI.ShowColormap(plotID - 1, show)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -595,7 +602,7 @@ void AppEngine::Slot_CMShow(unsigned int graphID, bool show)
 		return;
 	}
 
-	switch (this->plotManager->ShowColormap(graphID - 1, show)) {
+	switch (this->plotManager->ShowColormap(plotID - 1, show)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;
