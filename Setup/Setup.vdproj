@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0EEE20ADF6A74CE7A4E13D23179FE216"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_13CC1034E259437786D53CF17A664A3F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -446,6 +452,26 @@
             "TargetName" = "8:qt_hu.qm"
             "Tag" = "8:"
             "Folder" = "8:_800D376B65F3407199DA384B69B06FEC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0EEE20ADF6A74CE7A4E13D23179FE216"
+            {
+            "SourcePath" = "8:..\\Orbital\\scripts\\examples\\Colormap_Row.py"
+            "TargetName" = "8:Colormap_Row.py"
+            "Tag" = "8:"
+            "Folder" = "8:_1AB9EDBF03A34992BDE4C1745D7CF997"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1556,7 +1582,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Orbital"
         "ProductCode" = "8:{995E56AB-0D52-45BA-87A2-07FB85BF04DB}"
-        "PackageCode" = "8:{C4AE7106-C32B-4BDF-8061-635B6597960B}"
+        "PackageCode" = "8:{18E46280-B05E-4F8F-BB7B-396A269B96D3}"
         "UpgradeCode" = "8:{EF5BCF65-72B5-4750-8F1E-7315CE797416}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

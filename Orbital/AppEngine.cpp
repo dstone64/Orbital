@@ -866,7 +866,14 @@ void AppEngine::Slot_UpdatePythonPath()
 
 void AppEngine::Slot_Save(const QString& file, const QVector<bool>& dataToSave, bool timeStamp)
 {
-	this->appUI.CloseSaveDialog(!Save(file.toStdString(), dataToSave));
+	std::string f = file.toStdString();
+	if (timeStamp) {
+		size_t n = f.find_last_of('.');
+		std::string base = f.substr(0, n);
+		std::string ext = n == std::string::npos ? "" : f.substr(n);
+		f = base + '_' + GetTimeStr() + ext;
+	}
+	this->appUI.CloseSaveDialog(!Save(f, dataToSave));
 }
 
 /*
