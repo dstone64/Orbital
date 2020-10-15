@@ -9,3 +9,7 @@ necessary features for graphing and data collection. See the manual for more det
 
 - **Python 3.7+**
 - **Windows 10**
+
+* * *
+## Installation
+
