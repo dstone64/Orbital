@@ -1,20 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-38|Win32">
+      <Configuration>Debug-38</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-38|x64">
+      <Configuration>Debug-38</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-39|Win32">
+      <Configuration>Debug-39</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-39|x64">
+      <Configuration>Debug-39</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-38|Win32">
+      <Configuration>Release-38</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-38|x64">
+      <Configuration>Release-38</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-39|Win32">
+      <Configuration>Release-39</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-39|x64">
+      <Configuration>Release-39</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C1B992BA-0A0B-42C3-9A08-9A5133DE3F4B}</ProjectGuid>
     <Keyword>QtVS_v303</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -22,7 +72,47 @@
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
@@ -35,7 +125,37 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -45,33 +165,235 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
     <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
     <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'">
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'">
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'">
+    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Python37-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link />
+    <Link />
+    <Link />
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Python37-32\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python37)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python39)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python38)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python37)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python39)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python38)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProgramFiles)\Python37-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>$(ProgramFiles)\Python37-32\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
+    <Link />
     <CustomBuildStep>
       <Command>set VCINSTALLDIR=$(VCInstallDir)
 $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
     </CustomBuildStep>
     <CustomBuildStep>
-      <Outputs>*.dll;*.qm;%(Outputs)</Outputs>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+    </CustomBuildStep>
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python37)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <CustomBuildStep>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+    </CustomBuildStep>
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python39)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <CustomBuildStep>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+    </CustomBuildStep>
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python38)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <CustomBuildStep>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+    </CustomBuildStep>
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python37)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <CustomBuildStep />
+    <CustomBuildStep />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python39)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link />
+    <CustomBuildStep />
+    <CustomBuildStep />
+    <Link />
+    <Link />
+    <Link>
+      <AdditionalLibraryDirectories>$(PythonSource)$(Python38)\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)D3Dcompiler_47.dll;$(OutDir)libEGL.dll;$(OutDir)libGLESV2.dll;$(OutDir)opengl32sw.dll;$(OutDir)Qt5Core.dll;$(OutDir)Qt5Gui.dll;$(OutDir)Qt5Svg.dll;$(OutDir)Qt5Widgets.dll;$(OutDir)iconengines\qsvgicon.dll;$(OutDir)imageformats\qgif.dll;$(OutDir)imageformats\qicns.dll;$(OutDir)imageformats\qico.dll;$(OutDir)imageformats\qjpeg.dll;$(OutDir)imageformats\qsvg.dll;$(OutDir)imageformats\qtga.dll;$(OutDir)imageformats\qtiff.dll;$(OutDir)imageformats\qwbmp.dll;$(OutDir)imageformats\qwebp.dll;$(OutDir)platforms\qwindows.dll;$(OutDir)styles\qwindowsvistastyle.dll;$(OutDir)translations\qt_ar.qm;$(OutDir)translations\qt_bg.qm;$(OutDir)translations\qt_ca.qm;$(OutDir)translations\qt_cs.qm;$(OutDir)translations\qt_da.qm;$(OutDir)translations\qt_de.qm;$(OutDir)translations\qt_en.qm;$(OutDir)translations\qt_es.qm;$(OutDir)translations\qt_fi.qm;$(OutDir)translations\qt_fr.qm;$(OutDir)translations\qt_gd.qm;$(OutDir)translations\qt_he.qm;$(OutDir)translations\qt_hu.qm;$(OutDir)translations\qt_it.qm;$(OutDir)translations\qt_ja.qm;$(OutDir)translations\qt_ko.qm;$(OutDir)translations\qt_lv.qm;$(OutDir)translations\qt_pl.qm;$(OutDir)translations\qt_ru.qm;$(OutDir)translations\qt_sk.qm;$(OutDir)translations\qt_uk.qm;$(OutDir)translations\qt_zh_TW.qm;%(Outputs)</Outputs>
+      <Command>set VCINSTALLDIR=$(VCInstallDir)
+$(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
@@ -79,9 +401,59 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <QtModules>core;gui;widgets;printsupport</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'" Label="QtSettings">
+    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QtInstall>msvc2017</QtInstall>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'" Label="QtSettings">
+    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QtInstall>msvc2017</QtInstall>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="QtSettings">
     <QtInstall>msvc2017</QtInstall>
     <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'" Label="QtSettings">
+    <QtInstall>msvc2017</QtInstall>
+    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'" Label="QtSettings">
+    <QtInstall>msvc2017</QtInstall>
+    <QtModules>core;gui;widgets;printsupport</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;printsupport;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
@@ -100,7 +472,137 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

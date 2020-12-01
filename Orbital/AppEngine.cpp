@@ -11,14 +11,27 @@
 #define QCONNECT_PY(SType) QObject::connect(&this->pyEngine, &QPyEngineInterface::Signal_##SType, this, &AppEngine::Slot_##SType)
 #define QCONNECT_UI(SType) QObject::connect(&this->appUI, &AppUI::Signal_##SType, this, &AppEngine::Slot_##SType)
 
+#ifdef _WIN32
+
 #define SCRIPTDEFAULT L"scripts\\ScriptSkeleton.py"
 #define SCRIPTEXAMPLES "scripts\\examples"
+
 #ifdef _DEBUG
 #define CONFIGFILE L"..\\Orbital.ini"
 #define REFMANUALFILE L"..\\Orbital_rm.pdf"
 #else
 #define CONFIGFILE L"Orbital.ini"
 #define REFMANUALFILE L"Orbital_rm.pdf"
+#endif
+
+int ExecutePythonIDLE(const TCHAR * filename);
+
+#else
+// UNIX
+#define SCRIPTDEFAULT "scripts/ScriptSkeleton.py"
+#define SCRIPTEXAMPLES "scripts/examples"
+#define CONFIGFILE "Orbital.ini"
+#define REFMANUALFILE "Orbital_rm.pdf"
 #endif
 
 AppEngine::AppEngine(int argc, char *argv[])
@@ -785,8 +798,6 @@ void AppEngine::Slot_CustomControl(size_t cc)
 	}
 }
 
-int ExecutePythonIDLE(const TCHAR * filename);
-
 void AppEngine::Slot_CreateNewScript(const QString& filename)
 {
 	switch (ExecutePythonIDLE(filename.toStdWString().c_str())) {
@@ -880,6 +891,7 @@ void AppEngine::Slot_Save(const QString& file, const QVector<bool>& dataToSave, 
 ** UI Slots End
 */
 
+#ifdef _WIN32
 int ExecutePythonIDLE(const TCHAR * filename)
 {
 	STARTUPINFO si;
@@ -892,6 +904,7 @@ int ExecutePythonIDLE(const TCHAR * filename)
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
 
+	// Copy default script file contents to new file
 	if (CopyFile(SCRIPTDEFAULT, filename, FALSE) == 0)
 		return 1;
 
@@ -944,6 +957,7 @@ int OpenReferenceManual()
 		SW_SHOWDEFAULT
 	);
 }
+#endif
 
 std::string GetTimeStr()
 {
