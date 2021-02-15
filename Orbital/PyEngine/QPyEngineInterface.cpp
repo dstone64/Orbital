@@ -241,6 +241,11 @@ int QPyEngineInterface::Call(const char * funcName, PyObject * args, QPyEngine_R
 	return 0;
 }
 
+/*
+** Module function callback functions. Each callback function simply signals
+** to the interface when the function call has ended and a description of the
+** error if one had occurred. Return values are ignored.
+*/
 #define QPYENGINE_RETFN(fn) \
 void QPyEngineInterface::RetFn_##fn(PyObject * ret, QString& errStr) \
 {                                                                    \
@@ -269,6 +274,9 @@ QPYENGINE_RETFN(Custom6)
 QPYENGINE_RETFN(Custom7)
 QPYENGINE_RETFN(Custom8)
 
+/*
+** Not used.
+*/
 void PyErr_SetStringEx(PyObject * exception, const char * format, ...)
 {
 	va_list args, args_copy;
@@ -295,10 +303,13 @@ void PyErr_SetStringEx(PyObject * exception, const char * format, ...)
 	va_end(args);
 }
 
-/*
-** PYTHON OUTPUT FUNCTIONS
-*/
+/****************************
+** PYTHON OUTPUT FUNCTIONS **
+****************************/
 
+/*
+** 'msg' method
+*/
 PyObject * RecFn_Msg(PyObject * self, PyObject * args)
 {
 	const char * msg;
@@ -322,6 +333,9 @@ PyObject * RecFn_Msg(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'init' method
+*/
 PyObject * RecFn_Init(PyObject * self, PyObject * args)
 {
 	unsigned int nGraphs = 0;
@@ -331,6 +345,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 	QStringList params;
 	QStringList visaResources;
 
+	/* Function overloading implementation. NULL value for 'plotArrng' indicates no overload. */
 	if (!PyArg_ParseTuple(args, "IO|O", &nGraphs, &paramList, &visaTuple)) {
 		PyErr_Clear();
 		if (!PyArg_ParseTuple(args, "OO|O", &plotArrng, &paramList, &visaTuple)) {
@@ -338,6 +353,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 		}
 	}
 
+	/* Parse input parameters. */
 	if (!PyList_Check(paramList)) {
 		PyErr_SetString(PyExc_RuntimeError, "Parameters not received as list [init]");
 		return NULL;
@@ -351,6 +367,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 		}
 	}
 
+	/* Parse visa resources. */
 	if (visaTuple != NULL) {
 		if (!PyTuple_Check(visaTuple)) {
 			PyErr_SetString(PyExc_RuntimeError, "Visa resources not received as tuple [init]");
@@ -364,6 +381,7 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 		}
 	}
 
+	/* Parse plot arrangement. */
 	if (plotArrng != NULL) {
 		if (!PyList_Check(plotArrng)) {
 			PyErr_SetString(PyExc_RuntimeError, "Could not parse first argument [init]");
@@ -402,6 +420,10 @@ PyObject * RecFn_Init(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'sendData' method
+** This is one of the only methods where processing speed is the only factor.
+*/
 PyObject * RecFn_Data(PyObject * self, PyObject * args)
 {
 	unsigned int nGraph = 0, argc = 2;
@@ -418,6 +440,10 @@ PyObject * RecFn_Data(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'sendXData' method
+** Similar to 'sendData', processing speed should be a main concern within this function.
+*/
 PyObject * RecFn_XData(PyObject * self, PyObject * args)
 {
 	unsigned int nGraph = 0;
@@ -492,6 +518,9 @@ PyObject * RecFn_XData(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setDataInfo' method
+*/
 PyObject * RecFn_DataInfo(PyObject * self, PyObject * args)
 {
 	unsigned int id = 0;
@@ -505,6 +534,9 @@ PyObject * RecFn_DataInfo(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setDataFileInfo' method
+*/
 PyObject * RecFn_DataFileInfo(PyObject * self, PyObject * args)
 {
 	const char *info = NULL;
@@ -517,6 +549,9 @@ PyObject * RecFn_DataFileInfo(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'set2DPlotProperty' method
+*/
 PyObject * RecFn_Plot2DProp(PyObject * self, PyObject * args)
 {
 	unsigned int pIdx = 0;
@@ -534,6 +569,9 @@ PyObject * RecFn_Plot2DProp(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setColormapProperty' method
+*/
 PyObject * RecFn_PlotCMProp(PyObject * self, PyObject * args)
 {
 	unsigned int pIdx = 0;
@@ -551,6 +589,9 @@ PyObject * RecFn_PlotCMProp(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'saveData' method
+*/
 PyObject * RecFn_Save(PyObject * self, PyObject * args)
 {
 	unsigned int dataID = 0;
@@ -566,6 +607,9 @@ PyObject * RecFn_Save(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'clearData' method
+*/
 PyObject * RecFn_Clear(PyObject * self, PyObject * args)
 {
 	unsigned int dataID = 0;
@@ -578,6 +622,9 @@ PyObject * RecFn_Clear(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'sendCMData' method
+*/
 PyObject * RecFn_CMData(PyObject * self, PyObject * args)
 {
 	unsigned int graphID = 0, xIdx = 0, yIdx = 0;
@@ -591,6 +638,9 @@ PyObject * RecFn_CMData(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'sendCMDataRow' method
+*/
 PyObject * RecFn_CMDataRow(PyObject * self, PyObject * args)
 {
 	unsigned int graphID = 0, row = 0;
@@ -630,6 +680,9 @@ PyObject * RecFn_CMDataRow(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setupColormap' method
+*/
 PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 {
 	unsigned int graphID = 0, xSize = 0, ySize = 0;
@@ -638,6 +691,7 @@ PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 	bool show = true;
 	bool zRange = true;
 
+	/* Function overload implementation. */
 	if (!PyArg_ParseTuple(args, "IddddIIdd|O", &graphID, &xMin, &xMax, &yMin, &yMax, &xSize, &ySize, &zMin, &zMax, &pyBool)) {
 		PyErr_Clear();
 		zRange = false;
@@ -649,7 +703,7 @@ PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 	if (pyBool != NULL) {
 		int pyBoolVal = PyObject_IsTrue(pyBool);
 		if (pyBoolVal < 0) {
-			PyErr_SetString(PyExc_RuntimeError, "Could not parse bool value [setupCM]");
+			PyErr_SetString(PyExc_RuntimeError, "Could not parse bool value [setupColormap]");
 			return NULL;
 		}
 		if (pyBoolVal == 0)
@@ -660,6 +714,9 @@ PyObject * RecFn_CMSetup(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'showColormap' method
+*/
 PyObject * RecFn_CMShow(PyObject * self, PyObject * args)
 {
 	unsigned int graphID = 0;
@@ -684,6 +741,9 @@ PyObject * RecFn_CMShow(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'renameCustom' method
+*/
 PyObject * RecFn_CFName(PyObject * self, PyObject * args)
 {
 	unsigned int fnNumber = 0;
@@ -699,6 +759,9 @@ PyObject * RecFn_CFName(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setAutoSave' method
+*/
 PyObject * RecFn_ASFile(PyObject * self, PyObject * args)
 {
 	PyObject *pyBool = NULL;
@@ -725,6 +788,9 @@ PyObject * RecFn_ASFile(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
+/*
+** 'setPlotArrangement' method
+*/
 PyObject * RecFn_PlotSetup(PyObject * self, PyObject * args)
 {
 	PyObject * plotArrng = NULL;

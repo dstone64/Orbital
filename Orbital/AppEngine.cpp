@@ -18,9 +18,11 @@
 
 #ifdef _DEBUG
 #define CONFIGFILE L"..\\Orbital.ini"
+#define CONFIGJSON "..\\Config.json"
 #define REFMANUALFILE L"..\\Orbital_rm.pdf"
 #else
 #define CONFIGFILE L"Orbital.ini"
+#define CONFIGJSON "Config.json"
 #define REFMANUALFILE L"Orbital_rm.pdf"
 #endif
 

@@ -163,45 +163,45 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

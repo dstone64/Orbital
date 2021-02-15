@@ -25,9 +25,6 @@
     <Filter Include="Header Files\PyEngine">
       <UniqueIdentifier>{1eac5de3-46d8-4415-a727-d400e371f951}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PyEngine">
-      <UniqueIdentifier>{d31e0e4b-4b1d-42d6-98db-7c5a11fa79c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{ec17dbb3-5f37-473f-a6e5-954ad4af7707}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,9 @@
     <Filter Include="Python Files\Example Scripts">
       <UniqueIdentifier>{83be7d0d-9878-46c5-91d0-2b4d5cdd03a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\QPyEngine">
+      <UniqueIdentifier>{d31e0e4b-4b1d-42d6-98db-7c5a11fa79c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="AppMainWindow.qrc">
@@ -48,16 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PyEngine\PyEngine.cpp">
-      <Filter>Source Files\PyEngine</Filter>
+      <Filter>Source Files\QPyEngine</Filter>
     </ClCompile>
     <ClCompile Include="PyEngine\QPyEngineCore.cpp">
-      <Filter>Source Files\PyEngine</Filter>
+      <Filter>Source Files\QPyEngine</Filter>
     </ClCompile>
     <ClCompile Include="PyEngine\QPyEngineInterface.cpp">
-      <Filter>Source Files\PyEngine</Filter>
+      <Filter>Source Files\QPyEngine</Filter>
     </ClCompile>
     <ClCompile Include="PyEngine\QPyEngineUtils.cpp">
-      <Filter>Source Files\PyEngine</Filter>
+      <Filter>Source Files\QPyEngine</Filter>
     </ClCompile>
     <ClCompile Include="UI\AppMainWindow.cpp">
       <Filter>Source Files\UI</Filter>
