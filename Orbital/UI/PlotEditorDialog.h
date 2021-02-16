@@ -32,9 +32,6 @@ public:
 
 	PlotEditorDialog(QWidget *parent);
 	~PlotEditorDialog();
-	
-	int AddTab(const PlotProperties& p);
-	int DelTab();
 
 	PlotEditError SetPlotArrangement(const QVector<GridPoint>& plotArrangement);
 	PlotEditError GetPlotProperties(size_t plotIdx, PlotProperties& plotProperties) const;
@@ -235,6 +232,8 @@ private:
 	bool revertState;
 	bool resetPlots;
 
+	int AddTab(const PlotProperties& p);
+	int DelTab();
 	void Reset();
 	void Set();
 	void SetTabsQueuedForUpdate(bool queuedForUpdate = true);

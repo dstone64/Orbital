@@ -321,7 +321,7 @@ AppUI::UI_ERR_CODE AppUI::GetPlotProperties(size_t plotIdx, PlotProperties& plot
 	return UI_ERR_CODE::UNDEFINED_ERROR;
 }
 
-void AppUI::GetPlotMinSize(int & w, int & h) const
+void AppUI::GetPlotMinSize(int& w, int& h) const
 {
 	this->plotEditorDialog->GetPlotMinSize(w, h);
 }

@@ -47,18 +47,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PyEngine\PyEngine.cpp">
-      <Filter>Source Files\QPyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineCore.cpp">
-      <Filter>Source Files\QPyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineInterface.cpp">
-      <Filter>Source Files\QPyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineUtils.cpp">
-      <Filter>Source Files\QPyEngine</Filter>
-    </ClCompile>
     <ClCompile Include="UI\AppMainWindow.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -125,17 +113,20 @@
     <ClCompile Include="PlotManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngine.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineCore.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineInterface.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineUtils.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PyEngine\PyEngine.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
-    <QtMoc Include="PyEngine\QPyEngineCore.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
-    <QtMoc Include="PyEngine\QPyEngineInterface.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
     <QtMoc Include="UI\AppMainWindow.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
@@ -187,14 +178,17 @@
     <QtMoc Include="PlotManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngine.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngineCore.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngineInterface.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PyEngine\QPyEngineCommon.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="PyEngine\QPyEngineUtils.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </ClInclude>
     <ClInclude Include="AppConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -215,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QPyEngine\include\QPyEngineCommon.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="QPyEngine\include\QPyEngineUtils.h">
+      <Filter>Header Files\PyEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

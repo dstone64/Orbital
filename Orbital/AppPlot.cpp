@@ -378,12 +378,16 @@ void AppPlot::setMinSize(int minH, int minW)
 	this->plotCM->setMinSize(minH, minW);
 }
 
+/*
+** Swaps the currently displayed plot type (2-D to colormap or vice versa).
+*/
 void AppPlot::swap()
 {
 	switch (this->currentPlot)
 	{
 	case PlotType::TWODIMSN:
 	{
+		/* A bug/limitation with Qt requires the 2-D plot to be destroyed for the colormap to be displayed. */
 		this->vlo->replaceWidget(this->plot2D->getPlot(), this->plotCM->getPlot());
 		QPlot_2D *newPlot = new QPlot_2D(*this->plot2D);
 		delete this->plot2D;
@@ -404,6 +408,9 @@ void AppPlot::swap()
 	}
 }
 
+/*
+** Redraws the current plot.
+*/
 void AppPlot::redraw()
 {
 	if (this->queuedForRedraw) {
@@ -431,6 +438,9 @@ void AppPlot::redraw()
 	}
 }
 
+/*
+** Updates the plot with the given plot properties.
+*/
 void AppPlot::updateProperties(const PlotProperties& p)
 {
 	// 2-D Plot Settings

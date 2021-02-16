@@ -163,46 +163,46 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|Win32'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-39|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-38|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|Win32'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-39|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-38|x64'">
-    <IncludePath>$(ProjectDir);PyEngine;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+    <IncludePath>$(ProjectDir);QPyEngine\include;UI;C:\Code\rapidjson-master\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -627,10 +627,10 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile Include="GridPoint.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlotManager.cpp" />
-    <ClCompile Include="PyEngine\PyEngine.cpp" />
-    <ClCompile Include="PyEngine\QPyEngineCore.cpp" />
-    <ClCompile Include="PyEngine\QPyEngineInterface.cpp" />
-    <ClCompile Include="PyEngine\QPyEngineUtils.cpp" />
+    <ClCompile Include="QPyEngine\QPyEngine.cpp" />
+    <ClCompile Include="QPyEngine\QPyEngineCore.cpp" />
+    <ClCompile Include="QPyEngine\QPyEngineInterface.cpp" />
+    <ClCompile Include="QPyEngine\QPyEngineUtils.cpp" />
     <ClCompile Include="UI\AppMainWindow.cpp" />
     <ClCompile Include="UI\AutoSaveDialog.cpp" />
     <ClCompile Include="UI\CustomControlEditorDialog.cpp" />
@@ -647,21 +647,21 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile Include="UI\VisaSetupDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PyEngine\PyEngine.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="AppConfig.h" />
     <ClInclude Include="AppPlot.h" />
     <ClInclude Include="commondefine.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="GridPoint.h" />
     <ClInclude Include="QCustomContainer.h" />
+    <QtMoc Include="QPyEngine\include\QPyEngine.h" />
+    <ClInclude Include="QPyEngine\include\QPyEngineCommon.h" />
+    <QtMoc Include="QPyEngine\include\QPyEngineCore.h" />
+    <QtMoc Include="QPyEngine\include\QPyEngineInterface.h" />
+    <ClInclude Include="QPyEngine\include\QPyEngineUtils.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="PlotManager.h" />
     <QtMoc Include="AppUI.h" />
     <QtMoc Include="AppEngine.h" />
-    <ClInclude Include="PyEngine\QPyEngineCommon.h" />
-    <ClInclude Include="PyEngine\QPyEngineUtils.h" />
     <QtMoc Include="UI\VisaSetupDialog.h" />
     <QtMoc Include="UI\SettingsDialog.h" />
     <QtMoc Include="UI\SaveDialog.h" />
@@ -676,8 +676,6 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <QtMoc Include="UI\CustomControlEditorDialog.h" />
     <QtMoc Include="UI\AutoSaveDialog.h" />
     <QtMoc Include="UI\AppMainWindow.h" />
-    <QtMoc Include="PyEngine\QPyEngineInterface.h" />
-    <QtMoc Include="PyEngine\QPyEngineCore.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="UI\AppMainWindow.ui" />

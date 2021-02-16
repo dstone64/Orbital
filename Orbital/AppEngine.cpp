@@ -26,7 +26,7 @@
 #define REFMANUALFILE L"Orbital_rm.pdf"
 #endif
 
-int ExecutePythonIDLE(const TCHAR * filename);
+static int ExecutePythonIDLE(const TCHAR * filename);
 
 #else
 // UNIX
@@ -51,6 +51,7 @@ try :
 	UpdatePythonPath();
 	SetupExampleScripts();
 
+	/* Python module functions routines */
 	QCONNECT_PY(Error);
 	QCONNECT_PY(Msg);
 	QCONNECT_PY(ScriptInitialize);
@@ -71,6 +72,7 @@ try :
 	QCONNECT_PY(AutoSaveConfig);
 	QCONNECT_PY(PlotArrangement);
 
+	/* Python callback routines */
 	QCONNECT_PY(RetFn_Init);
 	QCONNECT_PY(RetFn_Run);
 	QCONNECT_PY(RetFn_Stop);
@@ -83,6 +85,7 @@ try :
 	QCONNECT_PY(RetFn_Custom7);
 	QCONNECT_PY(RetFn_Custom8);
 
+	/* UI signal handlers */
 	QCONNECT_UI(LoadModule);
 	QCONNECT_UI(RunModule);
 	QCONNECT_UI(StopModule);
@@ -206,6 +209,9 @@ void AppEngine::ScriptParameters_Export(const std::string& filename)
 	ofs.close();
 }
 
+/*
+** Creates a QString representation (in Python dictionary format) of the script arguments.
+*/
 QString AppEngine::BuildScriptArguments(std::vector<std::pair<std::string, std::string>>& scriptArgs) const
 {
 	QVector<std::pair<QString, QString>> scriptParameterVals = this->appUI.GetScriptParameterVals();
@@ -226,6 +232,9 @@ QString AppEngine::BuildScriptArguments(std::vector<std::pair<std::string, std::
 	return scriptArgsStr;
 }
 
+/*
+** Updates the current Python system path variable to include paths in the settings.
+*/
 void AppEngine::UpdatePythonPath()
 {
 	for (auto i : this->settings.python.dependencies.split(QChar(';'), QString::SkipEmptyParts)) {
@@ -236,6 +245,9 @@ void AppEngine::UpdatePythonPath()
 	}
 }
 
+/*
+** Initialization of example scripts. On start-up, the script examples directory is parsed and each example is added to the Example Scripts submenu.
+*/
 void AppEngine::SetupExampleScripts()
 {
 	try {
@@ -339,7 +351,7 @@ bool AppEngine::AutoSave(const std::string& file, size_t dataIdx, const std::str
 	return true;
 }
 
-std::string GetTimeStr();
+static std::string GetTimeStr();
 
 void AppEngine::GenerateAutoSaveFile(bool writeHeader)
 {
@@ -467,9 +479,9 @@ std::string AppEngine::UserHeader() const
 	return userHeader;
 }
 
-/*
-** PYTHON SLOTS
-*/
+/*****************
+** PYTHON SLOTS **
+*****************/
 
 void AppEngine::Slot_Error(const QString& errMsg)
 {
@@ -720,14 +732,14 @@ void AppEngine::Slot_RetFn_Custom8(int status)
 	this->appUI.EnableControl_Custom(8, true);
 }
 
-/*
-** PYTHON SLOTS END
-*/
+/*********************
+** PYTHON SLOTS END **
+*********************/
 
 
-/*
-** UI Slots
-*/
+/*************
+** UI Slots **
+*************/
 
 void AppEngine::Slot_LoadModule(const QString& filename)
 {
@@ -822,7 +834,7 @@ void AppEngine::Slot_ExampleScript(unsigned int scriptID)
 	Slot_LoadModule(this->exampleScripts.at(scriptID));
 }
 
-int OpenReferenceManual();
+unsigned long long OpenReferenceManual();
 
 void AppEngine::Slot_ReferenceManual()
 {
@@ -889,12 +901,12 @@ void AppEngine::Slot_Save(const QString& file, const QVector<bool>& dataToSave, 
 	this->appUI.CloseSaveDialog(!Save(f, dataToSave));
 }
 
-/*
-** UI Slots End
-*/
+/*****************
+** UI Slots End **
+*****************/
 
 #ifdef _WIN32
-int ExecutePythonIDLE(const TCHAR * filename)
+static int ExecutePythonIDLE(const TCHAR * filename)
 {
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
@@ -906,7 +918,7 @@ int ExecutePythonIDLE(const TCHAR * filename)
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
 
-	// Copy default script file contents to new file
+	/* Copy default script file contents to new file. */
 	if (CopyFile(SCRIPTDEFAULT, filename, FALSE) == 0)
 		return 1;
 
@@ -938,7 +950,7 @@ int ExecutePythonIDLE(const TCHAR * filename)
 	return 0;
 }
 
-int OpenReferenceManual()
+unsigned long long OpenReferenceManual()
 {
 	WCHAR szPath[MAX_PATH];
 	DWORD p;
@@ -950,7 +962,7 @@ int OpenReferenceManual()
 	while (szPath[--p] != '\\') szPath[p] = 0;
 	rmFile = std::wstring(szPath).append(REFMANUALFILE);
 
-	return (int)ShellExecute(
+	return (unsigned long long)ShellExecute(
 		NULL,
 		L"open",
 		rmFile.c_str(),
@@ -961,7 +973,7 @@ int OpenReferenceManual()
 }
 #endif
 
-std::string GetTimeStr()
+static std::string GetTimeStr()
 {
 	time_t t = time(NULL);
 	struct tm buf;

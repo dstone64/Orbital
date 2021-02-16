@@ -39,6 +39,10 @@ PlotEditorDialog::~PlotEditorDialog()
 	while (this->DelTab() != 0);
 }
 
+/*
+** Add a new plot tab with the given plot properties.
+** - Returns the index of the added tab.
+*/
 int PlotEditorDialog::AddTab(const PlotProperties& p)
 {
 	PlotEditorTab *pet = new PlotEditorTab(p);
@@ -47,6 +51,10 @@ int PlotEditorDialog::AddTab(const PlotProperties& p)
 	return this->ui.tabWidget_plotSettings->addTab(pet->tab, QString::number(this->tabs.size()));
 }
 
+/*
+** Removes the last plot tab.
+** - Returns the number of plot tabs remaining.
+*/
 int PlotEditorDialog::DelTab()
 {
 	if (this->tabs.size() < 1)
@@ -58,6 +66,14 @@ int PlotEditorDialog::DelTab()
 	return this->tabs.size();
 }
 
+/*
+** Sets the plot arrangement. The QButtonGrid is used to verify a valid plot arrangement.
+** - Returns error status NONE if the function succeeds.
+** - Returns error status PLOTARRANGE_INVALID_SIZE if any plot in the arrangement exceeds the boundaries
+**   of allowable plot arrangement dimensions (e.g. exceeding the maximum size).
+** - Returns error status PLOTARRANGE_INVALID_VALUE if a proper arrangement cannot be constructed with the
+**   given arrangement values.
+*/
 PlotEditorDialog::PlotEditError PlotEditorDialog::SetPlotArrangement(const QVector<GridPoint>& plotArrangement)
 {
 	int currentPlotCount = this->tabs.size();
@@ -85,6 +101,10 @@ PlotEditorDialog::PlotEditError PlotEditorDialog::SetPlotArrangement(const QVect
 	return PlotEditError::NONE;
 }
 
+/*
+** Retrieves the plot properties of a plot.
+** - Populates the given plot properties variable and returns error status NONE if successful, or error status INDEX_OUT_OF_RANGE.
+*/
 PlotEditorDialog::PlotEditError PlotEditorDialog::GetPlotProperties(size_t plotIdx, PlotProperties& plotProperties) const
 {
 	if (plotIdx >= this->tabs.size())
