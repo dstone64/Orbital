@@ -36,7 +36,10 @@ PlotEditorDialog::PlotEditorDialog(QWidget *parent) :
 
 PlotEditorDialog::~PlotEditorDialog()
 {
-	while (this->DelTab() != 0);
+	try {
+		while (this->DelTab() != 0);
+	}
+	catch (std::exception e) {}
 }
 
 /*

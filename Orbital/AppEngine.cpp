@@ -8,9 +8,6 @@
 #include <QRegularExpression>
 #include "AppConfig.h"
 
-#define QCONNECT_PY(SType) QObject::connect(&this->pyEngine, &QPyEngineInterface::Signal_##SType, this, &AppEngine::Slot_##SType)
-#define QCONNECT_UI(SType) QObject::connect(&this->appUI, &AppUI::Signal_##SType, this, &AppEngine::Slot_##SType)
-
 #ifdef _WIN32
 
 #define SCRIPTDEFAULT L"scripts\\ScriptSkeleton.py"
@@ -35,6 +32,9 @@ static int ExecutePythonIDLE(const TCHAR * filename);
 #define CONFIGFILE "Orbital.ini"
 #define REFMANUALFILE "Orbital_rm.pdf"
 #endif
+
+#define QCONNECT_PY(SType) QObject::connect(&this->pyEngine, &QPyEngineInterface::Signal_##SType, this, &AppEngine::Slot_##SType)
+#define QCONNECT_UI(SType) QObject::connect(&this->appUI, &AppUI::Signal_##SType, this, &AppEngine::Slot_##SType)
 
 AppEngine::AppEngine(int argc, char *argv[])
 try :
@@ -112,9 +112,15 @@ catch (std::runtime_error e)
 
 AppEngine::~AppEngine()
 {
-	appUI.UpdateConfig();
-	settings.UpdateConfig(&this->config);
-	config.update();
+	try {
+		appUI.UpdateConfig();
+		settings.UpdateConfig(&this->config);
+		config.update();
+	}
+	catch (std::exception e)
+	{
+		std::cerr << "ERROR - Configuration update failed : " << e.what() << std::endl;
+	}
 	delete this->plotManager;
 }
 

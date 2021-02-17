@@ -70,10 +70,8 @@ Init(QObject* parent)
 ** Deinitialize the Python engine.
 */
 void
-DeInit()
+DeInit() noexcept
 {
-	if (!Py_IsInitialized())
-		throw std::runtime_error("ERROR::PYENGINE: Python not initialized");
 	delete core;
 	Py_FinalizeEx();
 	free(QPyMethodTable);
