@@ -297,6 +297,15 @@ void QPlot_CM::setCell(int xIndex, int yIndex, double z)
 	this->map->data()->setCell(xIndex, yIndex, z);
 }
 
+void QPlot_CM::setRow(int yIndex, const QVector<qreal>& z)
+{
+	int xMax = this->map->data()->keySize() < z.size() ? this->map->data()->keySize() : z.size();
+
+	for (int xIndex = 0; xIndex < xMax; ++xIndex) {
+		this->map->data()->setCell(xIndex, yIndex, z[xIndex]);
+	}
+}
+
 void QPlot_CM::clear()
 {
 	this->map->data()->fill(this->map->colorScale()->dataRange().lower);
@@ -369,12 +378,16 @@ void AppPlot::setMinSize(int minH, int minW)
 	this->plotCM->setMinSize(minH, minW);
 }
 
+/*
+** Swaps the currently displayed plot type (2-D to colormap or vice versa).
+*/
 void AppPlot::swap()
 {
 	switch (this->currentPlot)
 	{
 	case PlotType::TWODIMSN:
 	{
+		/* A bug/limitation with Qt requires the 2-D plot to be destroyed for the colormap to be displayed. */
 		this->vlo->replaceWidget(this->plot2D->getPlot(), this->plotCM->getPlot());
 		QPlot_2D *newPlot = new QPlot_2D(*this->plot2D);
 		delete this->plot2D;
@@ -395,6 +408,9 @@ void AppPlot::swap()
 	}
 }
 
+/*
+** Redraws the current plot.
+*/
 void AppPlot::redraw()
 {
 	if (this->queuedForRedraw) {
@@ -422,6 +438,9 @@ void AppPlot::redraw()
 	}
 }
 
+/*
+** Updates the plot with the given plot properties.
+*/
 void AppPlot::updateProperties(const PlotProperties& p)
 {
 	// 2-D Plot Settings
@@ -594,6 +613,12 @@ void AppPlot::addData(const QVector<qreal>& x, const QVector<qreal>& y, bool sor
 void AppPlot::setCell(int xIndex, int yIndex, double z)
 {
 	this->plotCM->setCell(xIndex, yIndex, z);
+	this->queuedForRedraw = true;
+}
+
+void AppPlot::setRow(int yIndex, const QVector<qreal>& z)
+{
+	this->plotCM->setRow(yIndex, z);
 	this->queuedForRedraw = true;
 }
 

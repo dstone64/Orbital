@@ -11,14 +11,29 @@
 #define QCONNECT_PY(SType) QObject::connect(&this->pyEngine, &QPyEngineInterface::Signal_##SType, this, &AppEngine::Slot_##SType)
 #define QCONNECT_UI(SType) QObject::connect(&this->appUI, &AppUI::Signal_##SType, this, &AppEngine::Slot_##SType)
 
+#ifdef _WIN32
+
 #define SCRIPTDEFAULT L"scripts\\ScriptSkeleton.py"
 #define SCRIPTEXAMPLES "scripts\\examples"
+
 #ifdef _DEBUG
 #define CONFIGFILE L"..\\Orbital.ini"
+#define CONFIGJSON "..\\Config.json"
 #define REFMANUALFILE L"..\\Orbital_rm.pdf"
 #else
 #define CONFIGFILE L"Orbital.ini"
+#define CONFIGJSON "Config.json"
 #define REFMANUALFILE L"Orbital_rm.pdf"
+#endif
+
+static int ExecutePythonIDLE(const TCHAR * filename);
+
+#else
+// UNIX
+#define SCRIPTDEFAULT "scripts/ScriptSkeleton.py"
+#define SCRIPTEXAMPLES "scripts/examples"
+#define CONFIGFILE "Orbital.ini"
+#define REFMANUALFILE "Orbital_rm.pdf"
 #endif
 
 AppEngine::AppEngine(int argc, char *argv[])
@@ -36,6 +51,7 @@ try :
 	UpdatePythonPath();
 	SetupExampleScripts();
 
+	/* Python module functions routines */
 	QCONNECT_PY(Error);
 	QCONNECT_PY(Msg);
 	QCONNECT_PY(ScriptInitialize);
@@ -49,12 +65,14 @@ try :
 	QCONNECT_PY(SaveData);
 	QCONNECT_PY(ClearData);
 	QCONNECT_PY(CMData);
+	QCONNECT_PY(CMDataRow);
 	QCONNECT_PY(CMSetup);
 	QCONNECT_PY(CMShow);
 	QCONNECT_PY(CustomFnName);
 	QCONNECT_PY(AutoSaveConfig);
 	QCONNECT_PY(PlotArrangement);
 
+	/* Python callback routines */
 	QCONNECT_PY(RetFn_Init);
 	QCONNECT_PY(RetFn_Run);
 	QCONNECT_PY(RetFn_Stop);
@@ -67,10 +85,13 @@ try :
 	QCONNECT_PY(RetFn_Custom7);
 	QCONNECT_PY(RetFn_Custom8);
 
+	/* UI signal handlers */
 	QCONNECT_UI(LoadModule);
 	QCONNECT_UI(RunModule);
 	QCONNECT_UI(StopModule);
 	QCONNECT_UI(CustomControl);
+	QCONNECT_UI(ParamsExport);
+	QCONNECT_UI(ParamsImport);
 	QCONNECT_UI(CreateNewScript);
 	QCONNECT_UI(ExampleScript);
 	QCONNECT_UI(ReferenceManual);
@@ -155,7 +176,7 @@ void AppEngine::ScriptParameters_Import(const std::string& filename)
 	}
 
 	QVector<std::pair<QString, QString>> params;
-	std::regex re("^(\\w+):(.*)$");
+	std::regex re("^(.+):(.*)$");
 	std::smatch sm;
 	for (std::string line; getline(ifs, line); !ifs.eof() && !ifs.fail()) {
 		if (std::regex_match(line, sm, re)) {
@@ -188,6 +209,9 @@ void AppEngine::ScriptParameters_Export(const std::string& filename)
 	ofs.close();
 }
 
+/*
+** Creates a QString representation (in Python dictionary format) of the script arguments.
+*/
 QString AppEngine::BuildScriptArguments(std::vector<std::pair<std::string, std::string>>& scriptArgs) const
 {
 	QVector<std::pair<QString, QString>> scriptParameterVals = this->appUI.GetScriptParameterVals();
@@ -208,6 +232,9 @@ QString AppEngine::BuildScriptArguments(std::vector<std::pair<std::string, std::
 	return scriptArgsStr;
 }
 
+/*
+** Updates the current Python system path variable to include paths in the settings.
+*/
 void AppEngine::UpdatePythonPath()
 {
 	for (auto i : this->settings.python.dependencies.split(QChar(';'), QString::SkipEmptyParts)) {
@@ -218,6 +245,9 @@ void AppEngine::UpdatePythonPath()
 	}
 }
 
+/*
+** Initialization of example scripts. On start-up, the script examples directory is parsed and each example is added to the Example Scripts submenu.
+*/
 void AppEngine::SetupExampleScripts()
 {
 	try {
@@ -321,7 +351,7 @@ bool AppEngine::AutoSave(const std::string& file, size_t dataIdx, const std::str
 	return true;
 }
 
-std::string GetTimeStr();
+static std::string GetTimeStr();
 
 void AppEngine::GenerateAutoSaveFile(bool writeHeader)
 {
@@ -449,9 +479,9 @@ std::string AppEngine::UserHeader() const
 	return userHeader;
 }
 
-/*
-** PYTHON SLOTS
-*/
+/*****************
+** PYTHON SLOTS **
+*****************/
 
 void AppEngine::Slot_Error(const QString& errMsg)
 {
@@ -541,17 +571,23 @@ void AppEngine::Slot_ClearData(unsigned int dataID)
 	this->dataManager.ClearData(dataID);
 }
 
-void AppEngine::Slot_CMData(unsigned int graphID, unsigned int xIdx, unsigned int yIdx, double z)
+void AppEngine::Slot_CMData(unsigned int plotID, unsigned int xIdx, unsigned int yIdx, double z)
 {
-	this->plotManager->AddDataCM(graphID - 1, xIdx, yIdx, z);
+	this->plotManager->AddDataCM(plotID - 1, xIdx, yIdx, z);
 }
 
-void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
+void AppEngine::Slot_CMDataRow(unsigned int plotID, unsigned int yIdx, QVector<double> * z)
 {
-	if (graphID == 0)
+	this->plotManager->AddDataCM(plotID - 1, yIdx, z);
+	delete z;
+}
+
+void AppEngine::Slot_CMSetup(unsigned int plotID, double xMin, double xMax, double yMin, double yMax, unsigned int xSize, unsigned int ySize, bool zRange, double zMin, double zMax, bool show)
+{
+	if (plotID == 0)
 		return;
 
-	switch (this->appUI.SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
+	switch (this->appUI.SetupColormap(plotID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -562,7 +598,7 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 		return;
 	}
 
-	switch (this->plotManager->SetupColormap(graphID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
+	switch (this->plotManager->SetupColormap(plotID - 1, xMin, xMax, yMin, yMax, xSize, ySize, zRange, zMin, zMax)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;
@@ -573,16 +609,16 @@ void AppEngine::Slot_CMSetup(unsigned int graphID, double xMin, double xMax, dou
 	}
 
 	if (!show) {
-		Slot_CMShow(graphID, show);
+		Slot_CMShow(plotID, show);
 	}
 }
 
-void AppEngine::Slot_CMShow(unsigned int graphID, bool show)
+void AppEngine::Slot_CMShow(unsigned int plotID, bool show)
 {
-	if (graphID == 0)
+	if (plotID == 0)
 		return;
 
-	switch (this->appUI.ShowColormap(graphID - 1, show)) {
+	switch (this->appUI.ShowColormap(plotID - 1, show)) {
 	case AppUI::UI_ERR_CODE::PLOT_EDITOR_INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::UI: Plot index out of range.\n");
 		return;
@@ -593,7 +629,7 @@ void AppEngine::Slot_CMShow(unsigned int graphID, bool show)
 		return;
 	}
 
-	switch (this->plotManager->ShowColormap(graphID - 1, show)) {
+	switch (this->plotManager->ShowColormap(plotID - 1, show)) {
 	case PlotManager::PLOT_ERR_CODE::INDEX_OUT_OF_RANGE:
 		ErrorOutput("ERROR::PLOT: Plot index out of range.\n");
 		return;
@@ -696,14 +732,14 @@ void AppEngine::Slot_RetFn_Custom8(int status)
 	this->appUI.EnableControl_Custom(8, true);
 }
 
-/*
-** PYTHON SLOTS END
-*/
+/*********************
+** PYTHON SLOTS END **
+*********************/
 
 
-/*
-** UI Slots
-*/
+/*************
+** UI Slots **
+*************/
 
 void AppEngine::Slot_LoadModule(const QString& filename)
 {
@@ -770,13 +806,11 @@ void AppEngine::Slot_StopModule()
 
 void AppEngine::Slot_CustomControl(size_t cc)
 {
-	this->appUI.EnableControl_Custom(cc, false);
+	this->appUI.EnableControl_Custom(cc + 1, false);
 	if (this->pyEngine.Custom(cc)) {
-		this->appUI.EnableControl_Custom(cc, true);
+		this->appUI.EnableControl_Custom(cc + 1, true);
 	}
 }
-
-int ExecutePythonIDLE(const TCHAR * filename);
 
 void AppEngine::Slot_CreateNewScript(const QString& filename)
 {
@@ -800,7 +834,7 @@ void AppEngine::Slot_ExampleScript(unsigned int scriptID)
 	Slot_LoadModule(this->exampleScripts.at(scriptID));
 }
 
-int OpenReferenceManual();
+unsigned long long OpenReferenceManual();
 
 void AppEngine::Slot_ReferenceManual()
 {
@@ -857,14 +891,22 @@ void AppEngine::Slot_UpdatePythonPath()
 
 void AppEngine::Slot_Save(const QString& file, const QVector<bool>& dataToSave, bool timeStamp)
 {
-	this->appUI.CloseSaveDialog(!Save(file.toStdString(), dataToSave));
+	std::string f = file.toStdString();
+	if (timeStamp) {
+		size_t n = f.find_last_of('.');
+		std::string base = f.substr(0, n);
+		std::string ext = n == std::string::npos ? "" : f.substr(n);
+		f = base + '_' + GetTimeStr() + ext;
+	}
+	this->appUI.CloseSaveDialog(!Save(f, dataToSave));
 }
 
-/*
-** UI Slots End
-*/
+/*****************
+** UI Slots End **
+*****************/
 
-int ExecutePythonIDLE(const TCHAR * filename)
+#ifdef _WIN32
+static int ExecutePythonIDLE(const TCHAR * filename)
 {
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
@@ -876,6 +918,7 @@ int ExecutePythonIDLE(const TCHAR * filename)
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
 
+	/* Copy default script file contents to new file. */
 	if (CopyFile(SCRIPTDEFAULT, filename, FALSE) == 0)
 		return 1;
 
@@ -907,7 +950,7 @@ int ExecutePythonIDLE(const TCHAR * filename)
 	return 0;
 }
 
-int OpenReferenceManual()
+unsigned long long OpenReferenceManual()
 {
 	WCHAR szPath[MAX_PATH];
 	DWORD p;
@@ -919,7 +962,7 @@ int OpenReferenceManual()
 	while (szPath[--p] != '\\') szPath[p] = 0;
 	rmFile = std::wstring(szPath).append(REFMANUALFILE);
 
-	return (int)ShellExecute(
+	return (unsigned long long)ShellExecute(
 		NULL,
 		L"open",
 		rmFile.c_str(),
@@ -928,8 +971,9 @@ int OpenReferenceManual()
 		SW_SHOWDEFAULT
 	);
 }
+#endif
 
-std::string GetTimeStr()
+static std::string GetTimeStr()
 {
 	time_t t = time(NULL);
 	struct tm buf;

@@ -168,6 +168,14 @@ void PlotManager::AddDataCM(size_t pIdx, int x, int y, double z)
 	this->plotVector.at(pIdx)->setCell(x, y, z);
 }
 
+void PlotManager::AddDataCM(size_t pIdx, int y, QVector<qreal> * z)
+{
+	if (pIdx >= this->plotVector.size())
+		return;
+
+	this->plotVector.at(pIdx)->setRow(y, *z);
+}
+
 void PlotManager::Slot_Redraw()
 {
 	for (auto itr = this->plotVector.begin(); itr != this->plotVector.end(); ++itr)

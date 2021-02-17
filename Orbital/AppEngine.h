@@ -37,6 +37,7 @@ public Q_SLOTS:
 	void Slot_SaveData(unsigned int, const QString&);
 	void Slot_ClearData(unsigned int);
 	void Slot_CMData(unsigned int, unsigned int, unsigned int, double);
+	void Slot_CMDataRow(unsigned int, unsigned int, QVector<double>*);
 	void Slot_CMSetup(unsigned int, double, double, double, double, unsigned int, unsigned int, bool, double, double, bool);
 	void Slot_CMShow(unsigned int, bool);
 	void Slot_CustomFnName(unsigned int, const QString&);

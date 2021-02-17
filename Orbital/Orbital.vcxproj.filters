@@ -25,9 +25,6 @@
     <Filter Include="Header Files\PyEngine">
       <UniqueIdentifier>{1eac5de3-46d8-4415-a727-d400e371f951}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PyEngine">
-      <UniqueIdentifier>{d31e0e4b-4b1d-42d6-98db-7c5a11fa79c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{ec17dbb3-5f37-473f-a6e5-954ad4af7707}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,9 @@
     <Filter Include="Python Files\Example Scripts">
       <UniqueIdentifier>{83be7d0d-9878-46c5-91d0-2b4d5cdd03a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\QPyEngine">
+      <UniqueIdentifier>{d31e0e4b-4b1d-42d6-98db-7c5a11fa79c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="AppMainWindow.qrc">
@@ -47,18 +47,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PyEngine\PyEngine.cpp">
-      <Filter>Source Files\PyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineCore.cpp">
-      <Filter>Source Files\PyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineInterface.cpp">
-      <Filter>Source Files\PyEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="PyEngine\QPyEngineUtils.cpp">
-      <Filter>Source Files\PyEngine</Filter>
-    </ClCompile>
     <ClCompile Include="UI\AppMainWindow.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -125,17 +113,20 @@
     <ClCompile Include="PlotManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngine.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineCore.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineInterface.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="QPyEngine\QPyEngineUtils.cpp">
+      <Filter>Source Files\QPyEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PyEngine\PyEngine.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
-    <QtMoc Include="PyEngine\QPyEngineCore.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
-    <QtMoc Include="PyEngine\QPyEngineInterface.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </QtMoc>
     <QtMoc Include="UI\AppMainWindow.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
@@ -187,14 +178,17 @@
     <QtMoc Include="PlotManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngine.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngineCore.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
+    <QtMoc Include="QPyEngine\include\QPyEngineInterface.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PyEngine\QPyEngineCommon.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="PyEngine\QPyEngineUtils.h">
-      <Filter>Header Files\PyEngine</Filter>
-    </ClInclude>
     <ClInclude Include="AppConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -215,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QPyEngine\include\QPyEngineCommon.h">
+      <Filter>Header Files\PyEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="QPyEngine\include\QPyEngineUtils.h">
+      <Filter>Header Files\PyEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +261,21 @@
     </None>
     <None Include="Resources\Orbital.ini">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="scripts\examples\2DPlot_Advanced.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\2DPlot_Simple.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\2DPlot_XData.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\Colormap.py">
+      <Filter>Python Files\Example Scripts</Filter>
+    </None>
+    <None Include="scripts\examples\Colormap_Row.py">
+      <Filter>Python Files\Example Scripts</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -195,6 +195,7 @@ public:
 	QCPColorMap * const getMap();
 	QCPColorMapData * getData();
 	void setCell(int xIndex, int yIndex, double z);
+	void setRow(int yIndex, const QVector<qreal>& z);
 	void clear();
 
 private:
@@ -244,6 +245,7 @@ public:
 	void addData(double x, double y);
 	void addData(const QVector<qreal>& x, const QVector<qreal>& y, bool sorted = false);
 	void setCell(int xIndex, int yIndex, double z);
+	void setRow(int yIndex, const QVector<qreal>& z);
 	void clear2D();
 	void clearCM();
 	void clear();

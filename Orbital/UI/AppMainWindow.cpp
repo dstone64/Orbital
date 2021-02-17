@@ -99,10 +99,15 @@ QVector<std::pair<QString, QString>> AppMainWindow::GetScriptParameterVals() con
 void AppMainWindow::SetScriptParameterVals(const QVector<std::pair<QString, QString>>& params)
 {
 	for (auto p : params) {
+		int row;
+		QTableWidgetItem *item = Q_NULLPTR;
 		QList<QTableWidgetItem *> l = this->ui.tableWidget_scriptParams->findItems(p.first, Qt::MatchFixedString | Qt::MatchCaseSensitive);
 		if (l.isEmpty())
 			continue;
-		this->ui.tableWidget_scriptParams->item(this->ui.tableWidget_scriptParams->row(l.first()), 1)->setText(p.second);
+		row = this->ui.tableWidget_scriptParams->row(l.first());
+		if ((item = this->ui.tableWidget_scriptParams->item(row, 1)) == Q_NULLPTR)
+			this->ui.tableWidget_scriptParams->setItem(row, 1, (item = new QTableWidgetItem()));
+		item->setText(p.second);
 	}
 }
 

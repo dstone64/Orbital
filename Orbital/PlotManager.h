@@ -36,6 +36,7 @@ public:
 	void AddData2D(size_t pIdx, QVector<qreal> * x, QVector<qreal> * y);
 	void Clear2D(size_t pIdx);
 	void AddDataCM(size_t pIdx, int x, int y, double z);
+	void AddDataCM(size_t pIdx, int y, QVector<qreal> * z);
 
 public Q_SLOTS:
 	void Slot_Redraw();
