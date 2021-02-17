@@ -7,5 +7,10 @@ necessary features for graphing and data collection. See the manual for more det
 * * *
 ## Requirements
 
-- **Python 3.7+ (32-bit)**
+- **Python 3.7+**
 - **Windows 10**
+
+* * *
+## Installation
+
+Installation media for Python37, Python38, and Python39 are provided in 32-bit and 64-bit formats. The installed Python version must match the installation media. The required Microsoft Visual C++ redistributable packages are also provided in both 32-bit and 64-bit formats.
