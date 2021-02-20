@@ -43,13 +43,13 @@ public:
 	void DestroyDataSet(size_t idx);
 	void DestroyAllData();
 	void AppendData(size_t idx, unsigned int n, double data[32]);
-	void AppendData(size_t idx, const QVector<double> * x, const QVector<double> * y);
-	const DataSet * GetDataSet(size_t idx) const;
+	void AppendData(size_t idx, const QVector<double>* x, const QVector<double>* y);
+	const DataSet* GetDataSet(size_t idx) const;
 	size_t DataSetCount() const;
 	void SetDataInfo(size_t idx, const QString& info, bool buffer = true);
 	void SetDataFileInfo(const QString& info);
 
 private:
-	std::vector<DataSet *> dataSets;
+	std::vector<DataSet*> dataSets;
 	QString dataFileInfo;
 };

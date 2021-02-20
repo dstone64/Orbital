@@ -127,13 +127,13 @@ class QPlot
 {
 public:
 	virtual ~QPlot() {}
-	QCustomPlot * getPlot() const { return this->plot; }
+	QCustomPlot* getPlot() const { return this->plot; }
 	void setLabelX(const QString& l) { this->plot->xAxis->setLabel(l); }
 	void setLabelY(const QString& l) { this->plot->yAxis->setLabel(l); }
 	void setMinSize(int minH, int minW) { this->plot->setMinimumSize(minW, minH); }
 
 protected:
-	QCustomPlot *plot;
+	QCustomPlot* plot;
 };
 
 class QPlot_2D : public QPlot
@@ -167,7 +167,7 @@ public:
 	void clear();
 
 private:
-	QCPTextElement *titleElement;
+	QCPTextElement* titleElement;
 };
 
 class QPlot_CM : public QPlot
@@ -192,16 +192,16 @@ public:
 	void setLabelZ(const QString& zLabel);
 	void setRangeZ(const QCPRange& range);
 
-	QCPColorMap * const getMap();
-	QCPColorMapData * getData();
+	QCPColorMap* const getMap();
+	QCPColorMapData* getData();
 	void setCell(int xIndex, int yIndex, double z);
 	void setRow(int yIndex, const QVector<qreal>& z);
 	void clear();
 
 private:
-	QCPColorMap *map;
-	QCPColorScale *colorScale;
-	QCPTextElement *titleElement;
+	QCPColorMap* map;
+	QCPColorScale* colorScale;
+	QCPTextElement* titleElement;
 };
 
 class AppPlot : public QObject
@@ -215,8 +215,8 @@ public:
 	AppPlot(const PlotProperties& ps);
 	~AppPlot();
 
-	QPlot * plot(PlotType pt);
-	QWidget * widget() const { return this->vloWidget; }
+	QPlot* plot(PlotType pt);
+	QWidget* widget() const { return this->vloWidget; }
 	PlotType showing() const { return this->currentPlot; }
 	bool queued() const { return this->queuedForRedraw; }
 	void setMinSize(int minH, int minW);
@@ -261,11 +261,11 @@ public Q_SLOTS:
 	void saveColorMapImage();
 
 private:
-	QPlot_2D * plot2D;
-	QPlot_CM * plotCM;
+	QPlot_2D* plot2D;
+	QPlot_CM* plotCM;
 	PlotType currentPlot;
-	QWidget * vloWidget;
-	QVBoxLayout * vlo;
+	QWidget* vloWidget;
+	QVBoxLayout* vlo;
 	bool autoRescaleDataCM;
 	bool autoRescaleAxesCM;
 	bool autoRescaleAxes2D;

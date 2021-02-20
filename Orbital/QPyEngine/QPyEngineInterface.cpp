@@ -18,22 +18,22 @@ PyMethodDef pyMethodTable[] =
 		RECFN_INIT,
 		RecFn_Init,
 		METH_VARARGS,
-		"init(n_plots OR plot_arrangement, parameters, visa_resources=Null)"
-		"\nInitializes the client for the loaded script."
+		"init([n_plots, plot_arrangement], parameters, visa_resources=Null)"
+		"\nInitializes the client with the desired script parameters."
 	},
 	{
 		RECFN_DATA,
 		RecFn_Data,
 		METH_VARARGS,
 		"sendData(data_set, n_data, data0, data1, ...)"
-		"\nPass data to the client for saving and/or displaying."
+		"\nPasses a single data point to the client for plotting/saving."
 	},
 	{
 		RECFN_XDATA,
 		RecFn_XData,
 		METH_VARARGS,
 		"sendXData(data_set, x_data, y_data, save=False)"
-		"\nPass a multiple data points to the client."
+		"\nPasses multiple data points to the client."
 	},
 	{
 		RECFN_DATAINFO,
@@ -54,7 +54,7 @@ PyMethodDef pyMethodTable[] =
 		RecFn_Plot2DProp,
 		METH_VARARGS,
 		"set2DPlotProperty(plot_id, plot_property, new_value)"
-		"\nSets the given 2D plot property."
+		"\nSets the given 2-D plot property."
 	},
 	{
 		RECFN_PLOTCMPROP,
@@ -68,42 +68,42 @@ PyMethodDef pyMethodTable[] =
 		RecFn_Save,
 		METH_VARARGS,
 		"saveData(data_set, data_header)"
-		"\nPerforms an auto-save on the given data set. The data will be written to disk with the given header."
+		"\nPerforms an immediate save (file write) of the given data set."
 	},
 	{
 		RECFN_CLEAR,
 		RecFn_Clear,
 		METH_VARARGS,
 		"clearData(data_set)"
-		"\nClears the data set."
+		"\nClears the data buffer of a specified data set (does not clear plot - see sendData)."
 	},
 	{
 		RECFN_CMDATA,
 		RecFn_CMData,
 		METH_VARARGS,
 		"sendCMData(plot_id, x, y, val)"
-		"\nPass colormap data to the UI for displaying."
+		"\nPasses colormap data for plotting."
 	},
 	{
 		RECFN_CMDATAROW,
 		RecFn_CMDataRow,
 		METH_VARARGS,
 		"sendCMDataRow(plot_id, row, z_vals)"
-		"\nPass row of colormap data to the UI for displaying."
+		"\nPasses a row of colormap data for plotting."
 	},
 	{
 		RECFN_CMSETUP,
 		RecFn_CMSetup,
 		METH_VARARGS,
 		"setupCM(plot_id, xMin, xMax, yMin, yMax, xSize, ySize, show=True)"
-		"\nInitializes the colormap."
+		"\nInitializes a colormap."
 	},
 	{
 		RECFN_CMSHOW,
 		RecFn_CMShow,
 		METH_VARARGS,
 		"showColormap(plot_id, show=True)"
-		"\nToggles between the colormap and 2D plot."
+		"\nShows or hides a specified colormap."
 	},
 	{
 		RECFN_CFNAME,

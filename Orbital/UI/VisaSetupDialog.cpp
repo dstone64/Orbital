@@ -1,6 +1,6 @@
 #include "VisaSetupDialog.h"
 
-VisaSetupDialog::VisaSetupDialog(QWidget *parent)
+VisaSetupDialog::VisaSetupDialog(QWidget* parent)
 	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint)
 {
 	ui.setupUi(this);
@@ -59,7 +59,7 @@ void VisaSetupDialog::RemoveAll()
 	}
 }
 
-VisaSetupDialog::VisaEntry::VisaEntry(QWidget *parent, const QStringList& visaOptions) : resetVal(0)
+VisaSetupDialog::VisaEntry::VisaEntry(QWidget* parent, const QStringList& visaOptions) : resetVal(0)
 {
 	this->frame = new QFrame(parent);
 	this->layout = new QHBoxLayout(this->frame);

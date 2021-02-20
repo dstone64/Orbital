@@ -10,11 +10,11 @@ class AutoSaveDialog : public QDialog
 	Q_OBJECT
 
 public:
-	AutoSaveDialog(QWidget *parent);
+	AutoSaveDialog(QWidget* parent);
 	~AutoSaveDialog();
 
-	void Setup(AppSettings *settings);
-	void showEvent(QShowEvent *e);
+	void Setup(AppSettings* settings);
+	void showEvent(QShowEvent* e);
 
 public Q_SLOTS:
 	void on_pushButton_filePath_clicked();
@@ -22,5 +22,5 @@ public Q_SLOTS:
 
 private:
 	Ui::AutoSaveDialog ui;
-	AppSettings *settings;
+	AppSettings* settings;
 };

@@ -7,7 +7,7 @@
 class AppConfig
 {
 public:
-	AppConfig(const wchar_t * configFile);
+	AppConfig(const wchar_t* configFile);
 	~AppConfig();
 	AppConfig(const AppConfig&) = delete;
 	AppConfig& operator=(const AppConfig&) = delete;
@@ -55,6 +55,6 @@ struct AppSettings {
 		bool reportRunStatus;
 	} python;
 
-	void Setup(AppConfig * config);
-	void UpdateConfig(AppConfig * config);
+	void Setup(AppConfig* config);
+	void UpdateConfig(AppConfig* config);
 };

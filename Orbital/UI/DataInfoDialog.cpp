@@ -2,7 +2,7 @@
 
 QSizePolicy DataInfoDialog::DataInfoUI::sizePolicyPushButton(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-DataInfoDialog::DataInfoDialog(QWidget *parent)
+DataInfoDialog::DataInfoDialog(QWidget* parent)
 	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint)
 {
 	ui.setupUi(this);
@@ -16,7 +16,7 @@ DataInfoDialog::~DataInfoDialog()
 {
 }
 
-void DataInfoDialog::Setup(DataManager *hDataManager)
+void DataInfoDialog::Setup(DataManager* hDataManager)
 {
 	this->hDataManager = hDataManager;
 
@@ -97,7 +97,7 @@ void DataInfoDialog::on_pushButton_cancel_clicked()
 
 void DataInfoDialog::AddDataSet(const QString& tabLabel, const QString& dataLabel, const QString& defaultVal_dataSetInfo, bool defaultVal_buffer)
 {
-	DataInfoUI *diui = new DataInfoUI(this, this->dataInfoUI.size(), this->hDataManager, dataLabel, this->ui.scrollAreaWidgetContents_data, defaultVal_dataSetInfo, defaultVal_buffer);
+	DataInfoUI* diui = new DataInfoUI(this, this->dataInfoUI.size(), this->hDataManager, dataLabel, this->ui.scrollAreaWidgetContents_data, defaultVal_dataSetInfo, defaultVal_buffer);
 	this->ui.tabWidget->addTab(diui->Tab(), tabLabel);
 	this->ui.verticalLayout_scrollAreaWidgetContents_data->insertWidget(this->dataInfoUI.size(), diui->Frame());
 	this->dataInfoUI.push_back(diui);
@@ -105,13 +105,13 @@ void DataInfoDialog::AddDataSet(const QString& tabLabel, const QString& dataLabe
 
 void DataInfoDialog::RemoveDataSet()
 {
-	DataInfoUI *diui = this->dataInfoUI.takeLast();
+	DataInfoUI* diui = this->dataInfoUI.takeLast();
 	this->ui.tabWidget->removeTab(this->dataInfoUI.size());
 	this->ui.verticalLayout_scrollAreaWidgetContents_data->removeWidget(diui->Frame());
 	delete diui;
 }
 
-DataInfoDialog::DataInfoUI::DataInfoUI(QWidget *parent, int dataIdx, DataManager *hDataManager, const QString& dataLabel, QWidget *scrollAreaContents, const QString& defaultVal_dataSetInfo, bool defaultVal_buffer)
+DataInfoDialog::DataInfoUI::DataInfoUI(QWidget* parent, int dataIdx, DataManager* hDataManager, const QString& dataLabel, QWidget* scrollAreaContents, const QString& defaultVal_dataSetInfo, bool defaultVal_buffer)
 	: dataBufferDialog(parent, dataIdx, hDataManager)
 {
 	this->tab = new QWidget();

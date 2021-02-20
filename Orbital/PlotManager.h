@@ -23,7 +23,7 @@ public:
 		NO_SUCH_PROPERTY
 	};
 
-	PlotManager(QGridLayout *plotLayout, QObject *parent = Q_NULLPTR);
+	PlotManager(QGridLayout* plotLayout, QObject* parent = Q_NULLPTR);
 	~PlotManager();
 
 	void SetPlotArrangement(const QVector<GridPoint>& plotArrangement, int minW, int minH);
@@ -36,7 +36,7 @@ public:
 	void AddData2D(size_t pIdx, QVector<qreal> * x, QVector<qreal> * y);
 	void Clear2D(size_t pIdx);
 	void AddDataCM(size_t pIdx, int x, int y, double z);
-	void AddDataCM(size_t pIdx, int y, QVector<qreal> * z);
+	void AddDataCM(size_t pIdx, int y, QVector<qreal>* z);
 
 public Q_SLOTS:
 	void Slot_Redraw();
@@ -58,8 +58,8 @@ private:
 	PLOT_ERR_CODE EditPlotProperty_CM_ColorMax(size_t pIdx, const QString& s);
 
 	QTimer redrawTimer;
-	QGridLayout *plotLayout;
-	std::vector<AppPlot *> plotVector;
+	QGridLayout* plotLayout;
+	std::vector<AppPlot*> plotVector;
 
 	QHash<QString, PlotManager::PLOT_ERR_CODE(PlotManager::*)(size_t, const QString&)> editablePlotProperties_2D;
 	QHash<QString, PlotManager::PLOT_ERR_CODE(PlotManager::*)(size_t, const QString&)> editablePlotProperties_CM;

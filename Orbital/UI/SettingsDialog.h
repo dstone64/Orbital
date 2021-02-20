@@ -11,11 +11,11 @@ class SettingsDialog : public QDialog
 	Q_OBJECT
 
 public:
-	SettingsDialog(QWidget *parent);
+	SettingsDialog(QWidget* parent);
 	~SettingsDialog();
 
-	void Setup(AppSettings *settings);
-	void showEvent(QShowEvent *e);
+	void Setup(AppSettings* settings);
+	void showEvent(QShowEvent* e);
 
 public Q_SLOTS:
 	void on_pushButton_save_clicked();
@@ -30,6 +30,6 @@ Q_SIGNALS:
 
 private:
 	Ui::SettingsDialog ui;
-	AppSettings *settings;
+	AppSettings* settings;
 	bool updatePythonPath;
 };

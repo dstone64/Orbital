@@ -9,7 +9,7 @@
 QPYENGINE_NAMESPACE_BEGIN
 
 void Init(QObject* parent = Q_NULLPTR);
-void DeInit();
+void DeInit() noexcept;
 void RegisterMethod(const PyMethodDef& pyMethod);
 void RegisterMethods(const PyMethodDef* pyMethods, size_t n);
 void AppendPythonPath(const std::string&);

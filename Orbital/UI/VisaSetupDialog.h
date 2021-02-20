@@ -14,7 +14,7 @@ class VisaSetupDialog : public QDialog
 	Q_OBJECT
 
 public:
-	VisaSetupDialog(QWidget *parent);
+	VisaSetupDialog(QWidget* parent);
 	~VisaSetupDialog();
 
 	void GenerateVisaEntries(const QStringList& visaOptions);
@@ -29,22 +29,22 @@ private:
 
 	class VisaEntry {
 	public:
-		VisaEntry(QWidget *parent, const QStringList& visaOptions);
+		VisaEntry(QWidget* parent, const QStringList& visaOptions);
 		VisaEntry(const VisaEntry& src);
 		~VisaEntry();
-		QFrame *Frame() const { return this->frame; }
+		QFrame* Frame() const { return this->frame; }
 		QString CurrentText() const { return this->comboBox->currentText(); }
 		void Set() { this->resetVal = this->comboBox->currentIndex(); }
 		void Reset() { this->comboBox->setCurrentIndex(this->resetVal); }
 
 	private:
-		QFrame *frame;
-		QHBoxLayout *layout;
-		QLabel *label;
-		QComboBox *comboBox;
+		QFrame* frame;
+		QHBoxLayout* layout;
+		QLabel* label;
+		QComboBox* comboBox;
 		int resetVal;
 	};
-	QList<VisaEntry *> visaEntries;
+	QList<VisaEntry*> visaEntries;
 
 	void AddVisa(const QStringList& visaOptions);
 	void RemoveAll();

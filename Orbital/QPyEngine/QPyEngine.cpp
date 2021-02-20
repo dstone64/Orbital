@@ -107,7 +107,7 @@ RegisterMethods(const PyMethodDef* pyMethods, size_t n)
 		throw std::runtime_error("ERROR::PYENGINE: Python already initialized");
 	if (pyMethods == NULL || n == 0)
 		return;
-	if ((mTable = (PyMethodDef *)realloc(QPyMethodTable, (methodCount + n) * sizeof(PyMethodDef))) == NULL)
+	if ((mTable = (PyMethodDef*)realloc(QPyMethodTable, (methodCount + n) * sizeof(PyMethodDef))) == NULL)
 		throw std::runtime_error("ERROR::SYSTEM: Memory allocation failure");
 
 	memcpy(&mTable[methodCount], pyMethods, n * sizeof(PyMethodDef));

@@ -18,9 +18,9 @@ class DataInfoDialog : public QDialog
 	Q_OBJECT
 
 public:
-	DataInfoDialog(QWidget *parent);
+	DataInfoDialog(QWidget* parent);
 	~DataInfoDialog();
-	void Setup(DataManager *hDataManager);
+	void Setup(DataManager* hDataManager);
 	void SetDataSets(int nDataSets);
 	void SetDataFileInfo(const QString& text);
 	QString GetDataFileInfo() const;
@@ -39,11 +39,11 @@ private:
 	class DataInfoUI
 	{
 	public:
-		DataInfoUI(QWidget *parent, int dataIdx, DataManager *hDataManager, const QString& dataLabel, QWidget *scrollAreaContents, const QString& defaultVal_dataSetInfo, bool defaultVal_buffer);
+		DataInfoUI(QWidget* parent, int dataIdx, DataManager* hDataManager, const QString& dataLabel, QWidget* scrollAreaContents, const QString& defaultVal_dataSetInfo, bool defaultVal_buffer);
 		~DataInfoUI();
-		QWidget *Tab() { return this->tab; }
-		QFrame *Frame() { return this->frame; }
-		QPushButton *PushButton() { return this->pushButton; }
+		QWidget* Tab() { return this->tab; }
+		QFrame* Frame() { return this->frame; }
+		QPushButton* PushButton() { return this->pushButton; }
 		QString DataSetInfo() const { return this->plainTextEdit->toPlainText(); }
 		bool IsBuffering() const { return this->checkBox->isChecked(); }
 		void SetDataSetInfo(const QString& text);
@@ -54,13 +54,13 @@ private:
 		static QSizePolicy sizePolicyPushButton;
 	private:
 		DataBufferDialog dataBufferDialog;
-		QWidget *tab;
-		QHBoxLayout *tabLayout;
-		QPlainTextEdit *plainTextEdit;
-		QFrame *frame;
-		QHBoxLayout *frameLayout;
-		QPushButton *pushButton;
-		QCheckBox *checkBox;
+		QWidget* tab;
+		QHBoxLayout* tabLayout;
+		QPlainTextEdit* plainTextEdit;
+		QFrame* frame;
+		QHBoxLayout* frameLayout;
+		QPushButton* pushButton;
+		QCheckBox* checkBox;
 		QString resetVal_dataSetInfo;
 		bool resetVal_buffer;
 	};
@@ -70,5 +70,5 @@ private:
 	Ui::DataInfoDialog ui;
 	QVector<DataInfoUI*> dataInfoUI;
 	QString resetVal_dataFileInfo;
-	DataManager *hDataManager;
+	DataManager* hDataManager;
 };

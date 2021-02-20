@@ -23,7 +23,7 @@
 #define REFMANUALFILE L"Orbital_rm.pdf"
 #endif
 
-static int ExecutePythonIDLE(const TCHAR * filename);
+static int ExecutePythonIDLE(const TCHAR* filename);
 
 #else
 // UNIX
@@ -818,9 +818,13 @@ void AppEngine::Slot_CustomControl(size_t cc)
 	}
 }
 
-void AppEngine::Slot_CreateNewScript(const QString& filename)
+void AppEngine::Slot_CreateNewScript(const QString& filepath)
 {
-	switch (ExecutePythonIDLE(filename.toStdWString().c_str())) {
+	std::wstring filepath_quoted = std::wstring(L"\"");
+	filepath_quoted.append(filepath.toStdWString());
+	filepath_quoted.append(L"\"");
+
+	switch (ExecutePythonIDLE(filepath.toStdWString().c_str())) {
 	case 0:
 		break;
 	case 1:
@@ -912,12 +916,12 @@ void AppEngine::Slot_Save(const QString& file, const QVector<bool>& dataToSave, 
 *****************/
 
 #ifdef _WIN32
-static int ExecutePythonIDLE(const TCHAR * filename)
+static int ExecutePythonIDLE(const TCHAR* filename)
 {
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
-	TCHAR *cmdLine = NULL;
-	const TCHAR * cmdLineProg = L"python -m idlelib ";
+	TCHAR* cmdLine = NULL;
+	const TCHAR* cmdLineProg = LR"del(python -m idlelib ")del";
 	size_t cmdLineLen = 0;
 
 	ZeroMemory(&si, sizeof(si));
@@ -928,10 +932,12 @@ static int ExecutePythonIDLE(const TCHAR * filename)
 	if (CopyFile(SCRIPTDEFAULT, filename, FALSE) == 0)
 		return 1;
 
-	cmdLineLen = wcslen(cmdLineProg) + wcslen(filename) + 1;
-	cmdLine = (TCHAR *)malloc(cmdLineLen * sizeof(TCHAR));
-	wcscpy_s(cmdLine, cmdLineLen, cmdLineProg);
-	wcscat_s(cmdLine, cmdLineLen, filename);
+	/* Add 2 for closing quotation and null. */
+	cmdLineLen = wcslen(cmdLineProg) + wcslen(filename) + 2;
+	cmdLine = (TCHAR*)malloc(cmdLineLen * sizeof(TCHAR));
+	assert(wcscpy_s(cmdLine, cmdLineLen, cmdLineProg) == 0);
+	assert(wcscat_s(cmdLine, cmdLineLen, filename) == 0);
+	assert(wcscat_s(cmdLine, cmdLineLen, LR"del(")del") == 0);
 
 	if (!CreateProcess(
 		NULL,

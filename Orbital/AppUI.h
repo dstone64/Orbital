@@ -33,7 +33,7 @@ public:
 	AppUI(QObject *parent = Q_NULLPTR);
 	~AppUI();
 
-	void Setup(DataManager *dataManager, AppConfig *config, AppSettings *settings);
+	void Setup(DataManager* dataManager, AppConfig* config, AppSettings* settings);
 	void AddExampleScript(unsigned int scriptID, const QString& script);
 	void UpdateConfig();
 	void Show_MainWindow();
@@ -101,16 +101,16 @@ Q_SIGNALS:
 	void Signal_ReferenceManual();
 
 private:
-	AppMainWindow * mainWindow;
-	PlotEditorDialog * plotEditorDialog;
-	ErrorLogDialog * errorLogDialog;
-	CustomControlEditorDialog * customControlEditorDialog;
-	VisaSetupDialog * visaSetupDialog;
-	ModuleInfoDialog * moduleInfoDialog;
-	SettingsDialog * settingsDialog;
-	DataInfoDialog * dataInfoDialog;
-	SaveDialog * saveDialog;
-	AutoSaveDialog * autoSaveDialog;
+	AppMainWindow* mainWindow;
+	PlotEditorDialog* plotEditorDialog;
+	ErrorLogDialog* errorLogDialog;
+	CustomControlEditorDialog* customControlEditorDialog;
+	VisaSetupDialog* visaSetupDialog;
+	ModuleInfoDialog* moduleInfoDialog;
+	SettingsDialog* settingsDialog;
+	DataInfoDialog* dataInfoDialog;
+	SaveDialog* saveDialog;
+	AutoSaveDialog* autoSaveDialog;
 
 	QHash<QString, PlotEditorDialog::PlotEditError(PlotEditorDialog::*)(size_t, const QString&)> editablePlotProperties_2D;
 	QHash<QString, PlotEditorDialog::PlotEditError(PlotEditorDialog::*)(size_t, const QString&)> editablePlotProperties_CM;

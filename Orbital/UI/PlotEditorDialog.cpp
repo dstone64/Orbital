@@ -4,10 +4,10 @@
 QSizePolicy PlotEditorDialog::PlotEditorTabItem::sizePolicy_PF(QSizePolicy::Preferred, QSizePolicy::Fixed);
 QSizePolicy PlotEditorDialog::PlotEditorTabItem::sizePolicy_FP(QSizePolicy::Fixed, QSizePolicy::Preferred);
 
-const QDoubleValidator * PlotEditorDialog::PlotEditorTab::qVal_double = new QDoubleValidator();
-const QIntValidator * PlotEditorDialog::PlotEditorTab::qVal_int = new QIntValidator(1, INT32_MAX);
+const QDoubleValidator* PlotEditorDialog::PlotEditorTab::qVal_double = new QDoubleValidator();
+const QIntValidator* PlotEditorDialog::PlotEditorTab::qVal_int = new QIntValidator(1, INT32_MAX);
 
-PlotEditorDialog::PlotEditorDialog(QWidget *parent) :
+PlotEditorDialog::PlotEditorDialog(QWidget* parent) :
 	QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
 	plotArrangementDialog(this),
 	pixmap_check(QString::fromUtf8(":/AppMainWindow/Resources/checkmark.png")),
@@ -48,7 +48,7 @@ PlotEditorDialog::~PlotEditorDialog()
 */
 int PlotEditorDialog::AddTab(const PlotProperties& p)
 {
-	PlotEditorTab *pet = new PlotEditorTab(p);
+	PlotEditorTab* pet = new PlotEditorTab(p);
 
 	this->tabs.append(pet);
 	return this->ui.tabWidget_plotSettings->addTab(pet->tab, QString::number(this->tabs.size()));
@@ -388,7 +388,7 @@ void PlotEditorDialog::showEvent(QShowEvent *e)
 	this->revertState = true;
 }
 
-void PlotEditorDialog::closeEvent(QCloseEvent *e)
+void PlotEditorDialog::closeEvent(QCloseEvent* e)
 {
 	if (this->revertState) {
 		// Revert button grid
@@ -887,7 +887,7 @@ PlotEditorDialog::PlotEditorTab::PlotEditorTab(const PlotProperties& p)
 	);
 	this->tabItems_CM.append(this->tabItems.colorMap.colorMax);
 
-	for (QVector<PlotEditorTabItem *>::iterator itr = this->tabItems_CM.begin(); itr != this->tabItems_CM.end(); ++itr)
+	for (QVector<PlotEditorTabItem*>::iterator itr = this->tabItems_CM.begin(); itr != this->tabItems_CM.end(); ++itr)
 		this->vlo_scrollAreaWidgetContents_CM->addWidget((*itr)->frame);
 	this->vlo_scrollAreaWidgetContents_CM->addItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
 

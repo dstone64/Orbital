@@ -12,17 +12,17 @@ class AppMainWindow : public QMainWindow
 	Q_OBJECT
 
 public:
-	AppMainWindow(QWidget *parent = Q_NULLPTR);
+	AppMainWindow(QWidget* parent = Q_NULLPTR);
 	~AppMainWindow() {}
 
-	QGridLayout * PlotLayout() const { return this->plotLayout; }
-	QAction *Action_PlotEditor() { return this->ui.actionPlot_Editor; }
-	QAction *Action_ErrorLog() { return this->ui.actionError_Log; }
-	QAction *Action_CustomControlEditor() { return this->ui.actionCustom_Controls; }
-	QAction *Action_VisaSetup() { return this->ui.actionVisa_Setup; }
-	QAction *Action_ModuleInfo() { return this->ui.actionCurrent_Module; }
-	QAction *Action_Settings() { return this->ui.actionSettings; }
-	QAction *Action_DataInfo() { return this->ui.actionData_Info; }
+	QGridLayout* PlotLayout() const { return this->plotLayout; }
+	QAction* Action_PlotEditor() { return this->ui.actionPlot_Editor; }
+	QAction* Action_ErrorLog() { return this->ui.actionError_Log; }
+	QAction* Action_CustomControlEditor() { return this->ui.actionCustom_Controls; }
+	QAction* Action_VisaSetup() { return this->ui.actionVisa_Setup; }
+	QAction* Action_ModuleInfo() { return this->ui.actionCurrent_Module; }
+	QAction* Action_Settings() { return this->ui.actionSettings; }
+	QAction* Action_DataInfo() { return this->ui.actionData_Info; }
 	void AddExampleScript(unsigned int scriptID, const QString& script);
 	void SetCustomControl(size_t, const QString&);
 	void SetCustomControls(const QStringList& customControls);
@@ -69,7 +69,7 @@ private:
 	void CustomControlPanelSetup();
 
 	Ui::AppMainWindowClass ui;
-	QGridLayout *plotLayout;
+	QGridLayout* plotLayout;
 	std::array<QPushButton*, N_CUSTOMCONTROLS> customControls;
 	QVector<QAction*> exampleScripts;
 };

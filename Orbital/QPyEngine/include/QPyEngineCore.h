@@ -28,7 +28,7 @@ public:
 	void PushThreadQueue(std::thread::id&);
 
 	std::list<std::thread*> threads;
-	PyThreadState *mainThreadState;
+	PyThreadState* mainThreadState;
 
 public Q_SLOTS:
 	void Slot_FnEnd(PyObject* ret, QString errStr, QPyEngine_RetFn retFn);

@@ -30,7 +30,7 @@ public:
 		PLOTARRANGE_INVALID_VALUE
 	};
 
-	PlotEditorDialog(QWidget *parent);
+	PlotEditorDialog(QWidget* parent);
 	~PlotEditorDialog();
 
 	PlotEditError SetPlotArrangement(const QVector<GridPoint>& plotArrangement);
@@ -59,9 +59,9 @@ public:
 	PlotEditError EditPlot_ColorMid(size_t plotIdx, const QString& color);
 	PlotEditError EditPlot_ColorMax(size_t plotIdx, const QString& color);
 
-	void showEvent(QShowEvent *e);
-	void closeEvent(QCloseEvent *e);
-	void keyPressEvent(QKeyEvent *e) { if (e->key() != Qt::Key_Escape) QDialog::keyPressEvent(e); }
+	void showEvent(QShowEvent* e);
+	void closeEvent(QCloseEvent* e);
+	void keyPressEvent(QKeyEvent* e) { if (e->key() != Qt::Key_Escape) QDialog::keyPressEvent(e); }
 
 public Q_SLOTS:
 	void on_pushButton_save_clicked();
@@ -85,16 +85,16 @@ private:
 
 	class PlotEditorTabItem {
 	public:
-		PlotEditorTabItem(QWidget *parent, PlotEditorTabItem_t type, const QString& label);
+		PlotEditorTabItem(QWidget* parent, PlotEditorTabItem_t type, const QString& label);
 		~PlotEditorTabItem() {}
-		const QFrame * Frame() const { return this->frame; }
+		const QFrame* Frame() const { return this->frame; }
 		virtual void Reset() = 0;
 		virtual bool Set() = 0;
 
 		PlotEditorTabItem_t type;
-		QFrame *frame;
-		QLabel *label;
-		QHBoxLayout *hlo;
+		QFrame* frame;
+		QLabel* label;
+		QHBoxLayout* hlo;
 
 	private:
 		static QSizePolicy sizePolicy_PF;
@@ -102,57 +102,57 @@ private:
 	};
 	class TabItem_Text : public PlotEditorTabItem {
 	public:
-		TabItem_Text(QWidget *parent, const QString& label, const QString& resetVal);
-		TabItem_Text(QWidget *parent, const TabItem_Text& copy) : TabItem_Text(parent, copy.lineEdit->text(), copy.resetVal) {}
+		TabItem_Text(QWidget* parent, const QString& label, const QString& resetVal);
+		TabItem_Text(QWidget* parent, const TabItem_Text& copy) : TabItem_Text(parent, copy.lineEdit->text(), copy.resetVal) {}
 		~TabItem_Text() {}
 		void Reset();
 		bool Set();
 
-		QLineEdit *lineEdit;
+		QLineEdit* lineEdit;
 		QString resetVal;
 	};
 	class TabItem_Combo : public PlotEditorTabItem {
 	public:
-		TabItem_Combo(QWidget *parent, const QString& label, const QVector<QString>& options, int resetVal);
+		TabItem_Combo(QWidget* parent, const QString& label, const QVector<QString>& options, int resetVal);
 		~TabItem_Combo() {}
 		void Reset();
 		bool Set();
 
-		QComboBox *comboBox;
+		QComboBox* comboBox;
 		int resetVal;
 	};
 	class TabItem_Check : public PlotEditorTabItem {
 	public:
-		TabItem_Check(QWidget *parent, const QString& label, bool resetVal);
+		TabItem_Check(QWidget* parent, const QString& label, bool resetVal);
 		~TabItem_Check() {}
 		void Reset();
 		bool Set();
 
-		QCheckBox *checkBox;
+		QCheckBox* checkBox;
 		bool resetVal;
 	};
 	class TabItem_Interval : public PlotEditorTabItem {
 	public:
-		TabItem_Interval(QWidget *parent, const QString& label, const QValidator* v, const QString& resetVal_min, const QString& resetVal_max);
+		TabItem_Interval(QWidget* parent, const QString& label, const QValidator* v, const QString& resetVal_min, const QString& resetVal_max);
 		~TabItem_Interval() {}
 		void Reset();
 		bool Set();
 
-		QLineEdit *lineEdit_min;
-		QLineEdit *lineEdit_max;
+		QLineEdit* lineEdit_min;
+		QLineEdit* lineEdit_max;
 		QString resetVal_min;
 		QString resetVal_max;
 	};
 	class TabItem_IntCheck : public PlotEditorTabItem {
 	public:
-		TabItem_IntCheck(QWidget *parent, const QString& label, const QValidator* v, const QString& resetVal_min, const QString& resetVal_max, bool resetVal_isChecked = false);
+		TabItem_IntCheck(QWidget* parent, const QString& label, const QValidator* v, const QString& resetVal_min, const QString& resetVal_max, bool resetVal_isChecked = false);
 		~TabItem_IntCheck() {}
 		void Reset();
 		bool Set();
 
-		QCheckBox *checkBox;
-		QLineEdit *lineEdit_min;
-		QLineEdit *lineEdit_max;
+		QCheckBox* checkBox;
+		QLineEdit* lineEdit_min;
+		QLineEdit* lineEdit_max;
 		bool resetVal_isChecked;
 		QString resetVal_min;
 		QString resetVal_max;
@@ -166,65 +166,65 @@ private:
 		void Set();
 		PlotProperties GetPlotProperties() const;
 
-		QWidget *tab;
-		QHBoxLayout *tabLayout;
-		QTabWidget *tabWidget;
+		QWidget* tab;
+		QHBoxLayout* tabLayout;
+		QTabWidget* tabWidget;
 
-		QWidget *tab_2D;
-		QVBoxLayout *vlo_2D;
-		QScrollArea *scrollArea_2D;
-		QWidget *scrollAreaWidgetContents_2D;
-		QVBoxLayout *vlo_scrollAreaWidgetContents_2D;
+		QWidget* tab_2D;
+		QVBoxLayout* vlo_2D;
+		QScrollArea* scrollArea_2D;
+		QWidget* scrollAreaWidgetContents_2D;
+		QVBoxLayout* vlo_scrollAreaWidgetContents_2D;
 
-		QWidget *tab_CM;
-		QVBoxLayout *vlo_CM;
-		QScrollArea *scrollArea_CM;
-		QWidget *scrollAreaWidgetContents_CM;
-		QVBoxLayout *vlo_scrollAreaWidgetContents_CM;
+		QWidget* tab_CM;
+		QVBoxLayout* vlo_CM;
+		QScrollArea* scrollArea_CM;
+		QWidget* scrollAreaWidgetContents_CM;
+		QVBoxLayout* vlo_scrollAreaWidgetContents_CM;
 
-		QVector<PlotEditorTabItem *> tabItems_2D;
-		QVector<PlotEditorTabItem *> tabItems_CM;
+		QVector<PlotEditorTabItem*> tabItems_2D;
+		QVector<PlotEditorTabItem*> tabItems_CM;
 
 		struct {
 			struct {
-				TabItem_Text *title;
-				TabItem_Text *xAxis;
-				TabItem_Text *yAxis;
-				TabItem_Combo *lineStyle;
-				TabItem_Combo *scatterStyle;
-				TabItem_Combo *scatterSize;
-				TabItem_Combo *color;
+				TabItem_Text* title;
+				TabItem_Text* xAxis;
+				TabItem_Text* yAxis;
+				TabItem_Combo* lineStyle;
+				TabItem_Combo* scatterStyle;
+				TabItem_Combo* scatterSize;
+				TabItem_Combo* color;
 			} twoD;
 			struct {
-				TabItem_Check *show;
-				TabItem_Text *title;
-				TabItem_Text *xAxis;
-				TabItem_Text *yAxis;
-				TabItem_Text *zAxis;
-				TabItem_Interval *xRange;
-				TabItem_Interval *yRange;
-				TabItem_Interval *dataSize;
-				TabItem_IntCheck *zRange;
-				TabItem_Combo *colorMin;
-				TabItem_Combo *colorMid;
-				TabItem_Combo *colorMax;
+				TabItem_Check* show;
+				TabItem_Text* title;
+				TabItem_Text* xAxis;
+				TabItem_Text* yAxis;
+				TabItem_Text* zAxis;
+				TabItem_Interval* xRange;
+				TabItem_Interval* yRange;
+				TabItem_Interval* dataSize;
+				TabItem_IntCheck* zRange;
+				TabItem_Combo* colorMin;
+				TabItem_Combo* colorMid;
+				TabItem_Combo* colorMax;
 			} colorMap;
 		} tabItems;
 
 		bool queuedForUpdate;
 
 	private:
-		static const QDoubleValidator * qVal_double;
-		static const QIntValidator * qVal_int;
+		static const QDoubleValidator* qVal_double;
+		static const QIntValidator* qVal_int;
 	};
 
 	Ui::PlotEditorDialog ui;
 	PlotArrangementDialog plotArrangementDialog;
-	QVector<PlotEditorTab *> tabs;
+	QVector<PlotEditorTab*> tabs;
 	QVector<PlotProperties> tabsTemp;
 	QVector<GridPoint> plotArrangement;
-	QButtonGrid *buttonGrid;
-	QButtonGrid *buttonGridTemp;
+	QButtonGrid* buttonGrid;
+	QButtonGrid* buttonGridTemp;
 	QPixmap pixmap_check;
 	QPixmap pixmap_exclamation;
 	int minW;

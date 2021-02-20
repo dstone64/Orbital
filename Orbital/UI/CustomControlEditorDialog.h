@@ -14,10 +14,10 @@ class CustomControlEditorDialog : public QDialog
 	Q_OBJECT
 
 public:
-	CustomControlEditorDialog(QWidget *parent);
+	CustomControlEditorDialog(QWidget* parent);
 	~CustomControlEditorDialog();
 
-	void Setup(AppConfig *config);
+	void Setup(AppConfig* config);
 	void UpdateConfig() const;
 	const QStringList& CustomControlNames() const { return this->customControlNames; }
 	void SetName(size_t customControl, const QString& newName);
@@ -32,7 +32,7 @@ Q_SIGNALS:
 
 private:
 	Ui::CustomControlEditorDialog ui;
-	AppConfig * config;
+	AppConfig* config;
 	QStringList customControlNames;
 	std::array<QLineEdit*, N_CUSTOMCONTROLS> customControlLineEdits;
 };

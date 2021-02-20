@@ -93,7 +93,7 @@ private:
     QApplication a;
 	AppUI appUI;
 	QPyEngineInterface pyEngine;
-	PlotManager * plotManager;
+	PlotManager* plotManager;
 	DataManager dataManager;
 	AppConfig config;
 	AppSettings settings;
