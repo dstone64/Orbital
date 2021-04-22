@@ -208,6 +208,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython37))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -220,6 +221,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython37))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -232,6 +234,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython38))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -244,6 +247,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython37))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -256,6 +260,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython37))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -268,6 +273,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);EMBEDPYTHONDIR=LR"($(PythonSource)$(EmbedPython38))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <Link />
@@ -280,6 +286,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep>
@@ -300,6 +307,7 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep>
@@ -320,6 +328,7 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep>
@@ -340,6 +349,7 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python37)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep>
@@ -360,6 +370,7 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python39)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep />
@@ -380,6 +391,7 @@ $(QtToolsPath)\windeployqt --release $(OutDir)$(TargetName)$(TargetExt)</Command
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PythonSource)$(Python38)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);LOCALPYTHONSRCDIR=LR"($(PythonSource))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <CustomBuildStep />

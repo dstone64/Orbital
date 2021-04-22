@@ -1,4 +1,25 @@
+/******************************************************************************
+
+    This file is part of Orbital.
+	Copyright (C) 2020 by Dan Stone (danstone124@gmail.com)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.If not, see < https://www.gnu.org/licenses/>.
+
+******************************************************************************/
+
 #include "AppEngine.h"
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <filesystem>
@@ -10,6 +31,8 @@
 
 #ifdef _WIN32
 
+#include <malloc.h>
+
 #define SCRIPTDEFAULT L"scripts\\ScriptSkeleton.py"
 #define SCRIPTEXAMPLES "scripts\\examples"
 
@@ -17,10 +40,12 @@
 #define CONFIGFILE L"..\\Orbital.ini"
 #define CONFIGJSON "..\\Config.json"
 #define REFMANUALFILE L"..\\Orbital_rm.pdf"
+
 #else
 #define CONFIGFILE L"Orbital.ini"
 #define CONFIGJSON "Config.json"
 #define REFMANUALFILE L"Orbital_rm.pdf"
+#define EMBEDPYTHONDIR L"embed"
 #endif
 
 static int ExecutePythonIDLE(const TCHAR* filename);
@@ -820,10 +845,6 @@ void AppEngine::Slot_CustomControl(size_t cc)
 
 void AppEngine::Slot_CreateNewScript(const QString& filepath)
 {
-	std::wstring filepath_quoted = std::wstring(L"\"");
-	filepath_quoted.append(filepath.toStdWString());
-	filepath_quoted.append(L"\"");
-
 	switch (ExecutePythonIDLE(filepath.toStdWString().c_str())) {
 	case 0:
 		break;
@@ -844,7 +865,7 @@ void AppEngine::Slot_ExampleScript(unsigned int scriptID)
 	Slot_LoadModule(this->exampleScripts.at(scriptID));
 }
 
-unsigned long long OpenReferenceManual();
+static unsigned long long OpenReferenceManual();
 
 void AppEngine::Slot_ReferenceManual()
 {
@@ -921,7 +942,8 @@ static int ExecutePythonIDLE(const TCHAR* filename)
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
 	TCHAR* cmdLine = NULL;
-	const TCHAR* cmdLineProg = LR"del(python -m idlelib ")del";
+	const TCHAR* cmdLineProg = EMBEDPYTHONDIR LR"del(\python.exe)del";
+	const TCHAR* cmdLineArgs = LR"del( -m idlelib )del";
 	size_t cmdLineLen = 0;
 
 	ZeroMemory(&si, sizeof(si));
@@ -932,12 +954,16 @@ static int ExecutePythonIDLE(const TCHAR* filename)
 	if (CopyFile(SCRIPTDEFAULT, filename, FALSE) == 0)
 		return 1;
 
-	/* Add 2 for closing quotation and null. */
-	cmdLineLen = wcslen(cmdLineProg) + wcslen(filename) + 2;
-	cmdLine = (TCHAR*)malloc(cmdLineLen * sizeof(TCHAR));
-	assert(wcscpy_s(cmdLine, cmdLineLen, cmdLineProg) == 0);
-	assert(wcscat_s(cmdLine, cmdLineLen, filename) == 0);
-	assert(wcscat_s(cmdLine, cmdLineLen, LR"del(")del") == 0);
+	/* Add 5 for surrounding quotations and null. */
+	cmdLineLen = wcslen(cmdLineProg) + wcslen(cmdLineArgs) + wcslen(filename) + 5;
+	cmdLine = (TCHAR*)calloc(cmdLineLen, sizeof(TCHAR));
+	assert(wcscpy_s(cmdLine, cmdLineLen, LR"del(")del") == 0);		/* cmdLine = "\""															*/
+	assert(wcscat_s(cmdLine, cmdLineLen, cmdLineProg) == 0);		/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe"								*/
+	assert(wcscat_s(cmdLine, cmdLineLen, LR"del(")del") == 0);		/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe\""								*/
+	assert(wcscat_s(cmdLine, cmdLineLen, cmdLineArgs) == 0);		/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe\" -m idlelib "					*/
+	assert(wcscat_s(cmdLine, cmdLineLen, LR"del(")del") == 0);		/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe\" -m idlelib \""				*/
+	assert(wcscat_s(cmdLine, cmdLineLen, filename) == 0);			/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe\" -m idlelib \"[filename]"		*/
+	assert(wcscat_s(cmdLine, cmdLineLen, LR"del(")del") == 0);		/* cmdLine = "\"[EMBEDPYTHONDIR]\\python.exe\" -m idlelib \"[filename]\""	*/
 
 	if (!CreateProcess(
 		NULL,
@@ -945,7 +971,7 @@ static int ExecutePythonIDLE(const TCHAR* filename)
 		NULL,
 		NULL,
 		FALSE,
-		DETACHED_PROCESS,
+		DETACHED_PROCESS | CREATE_UNICODE_ENVIRONMENT,
 		NULL,
 		NULL,
 		&si,
@@ -962,7 +988,7 @@ static int ExecutePythonIDLE(const TCHAR* filename)
 	return 0;
 }
 
-unsigned long long OpenReferenceManual()
+static unsigned long long OpenReferenceManual()
 {
 	WCHAR szPath[MAX_PATH];
 	DWORD p;

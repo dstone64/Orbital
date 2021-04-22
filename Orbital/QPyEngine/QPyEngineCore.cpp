@@ -1,3 +1,22 @@
+/******************************************************************************
+
+	Copyright (C) 2020 by Dan Stone (danstone124@gmail.com)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.If not, see < https://www.gnu.org/licenses/>.
+
+******************************************************************************/
+
 #include "QPyEngineCore.h"
 
 QPYENGINE_NAMESPACE_BEGIN
@@ -44,20 +63,19 @@ void QPyEngineCore::Unlock()
 */
 void QPyEngineCore::PushThreadQueue(std::thread::id& id)
 {
-	this->mtx.lock();
+	std::scoped_lock lock(this->mtx);
 	this->threadQueue.push(id);
-	this->mtx.unlock();
 }
 
 /*
-** The slot for a module function call's finalization. This is signalled from a child thread and
-**   is executed (here) in the main thread. The implementation uses Qt's signal queueing to ensure
-**   that all finalized function calls will be dealt with in the case that a call completes before
+** The slot for a module function call's finalization. Signalled from a child thread and executed
+**   here in the main thread. The implementation uses Qt's signal queueing to ensure that all
+**   finalized function calls will be dealt with in the case that a call completes before
 **   finalization can be executed.
 */
 void QPyEngineCore::Slot_FnEnd(PyObject* ret, QString errStr, QPyEngine_RetFn retFn)
 {
-	this->mtx.lock();
+	std::unique_lock<std::mutex> lock(this->mtx);
 	for (auto itr = this->threads.begin(); itr != this->threads.end(); ++itr) {
 		if ((*itr)->get_id() == this->threadQueue.front()) {
 			(*itr)->join();
@@ -66,7 +84,7 @@ void QPyEngineCore::Slot_FnEnd(PyObject* ret, QString errStr, QPyEngine_RetFn re
 			break;
 		}
 	}
-	this->mtx.unlock();
+	lock.unlock();
 	(*retFn)(ret, errStr);
 }
 
